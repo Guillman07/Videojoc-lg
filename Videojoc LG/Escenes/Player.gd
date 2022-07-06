@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocitat = Vector2.ZERO
+	
 	if Input.is_action_pressed("Est"):
 		velocitat += Vector2.RIGHT * velocitat_base
 	if Input.is_action_pressed("Oest"):
