@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var velocitat = Vector2.ZERO
-var velocitat_base = 300
+var velocitat = 300
+var moviment = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,28 +14,31 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	moviment = Vector2()
 	
 	if Input.is_action_pressed("Est"):
-		velocitat += Vector2.RIGHT * velocitat_base
+		moviment.x += 1
 	if Input.is_action_pressed("Oest"):
-		velocitat += Vector2.LEFT * velocitat_base
+		moviment.x -= 1
 	if Input.is_action_pressed("Nord"):
-		velocitat += Vector2.UP * velocitat_base
+		moviment.y -= 1
 	if Input.is_action_pressed("Sud"):
-		velocitat += Vector2.DOWN * velocitat_base
+		moviment.y += 1
+	if moviment.length() > 0:
+		moviment = moviment.normalized() * velocitat
+		
+	position += moviment * delta
 	
+	animacio(moviment)
 	
+func animacio(moviment):
 	
-		animacio(velocitat)
-	
-func animacio(velocitat):
-	
-	if velocitat.x > 0.1:
+	if moviment.x > 0.1:
 		$AnimatedSprite.play("Run")
 		$AnimatedSprite.flip_h = false
-	elif velocitat.x < -0.1:
+	elif moviment.x < -0.1:
 		$AnimatedSprite.play("Run")
 		$AnimatedSprite.flip_h = true
 		
-	if abs(velocitat.x) < 0.1:
+	if abs(moviment.x) < 0.1:
 		$AnimatedSprite.play("Idle")
