@@ -20,7 +20,9 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Area2D" type="Area2D"]
+rotation = -0.0333125
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,7 +30,15 @@ position = Vector2( -3, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = -1.54033
 frames = SubResource( 2 )
 animation = "Idle"
 frame = 5
 playing = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+rotation = -0.00717435
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

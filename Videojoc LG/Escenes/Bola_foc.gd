@@ -1,17 +1,29 @@
-extends KinematicBody2D
+extends Area2D
 
-var direccio = Vector2(1,0)
-var velocitat = 1000
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#var direccio = Vector2(1,0)
+var velocitat = 100
 
+func _physics_process(delta):
+	
+	#var collision_info = move_and_collide(direccio.normalized() * delta * velocitat)
+	
+	#if collision_info != null:
+		#queue_free()
+	
+	var direccio = Vector2.RIGHT.rotated(rotation)
+	global_position += velocitat * direccio * delta
+	
+func destruir():
+	queue_free()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_Area2D_area_entered(area):
+	destruir()
 
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Protagonista"):
+		pass
+	else:
+		destruir()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var collision_info = move_and_collide(direccio.normalized() * delta * velocitat)
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
