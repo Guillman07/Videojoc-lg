@@ -1,15 +1,62 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.5, 32 )
+[ext_resource path="res://Imatges/Dummy/Dummy.png" type="Texture" id=1]
+[ext_resource path="res://Imatges/Dummy/Dummy_hit.png" type="Texture" id=2]
+[ext_resource path="res://Imatges/HUD/Vida.png" type="Texture" id=3]
+[ext_resource path="res://Escenes/ninot practica.gd" type="Script" id=4]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 11.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 19.0263
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["Enemic"]]
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 3 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 33.0
-margin_bottom = 32.0
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 4, -40 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "Idle"
+
+[node name="Vida" type="TextureProgress" parent="."]
+margin_left = -40.0
+margin_top = -73.0
+margin_right = 140.0
+margin_bottom = 107.0
+rect_scale = Vector2( 0.5, 0.05 )
+max_value = 1000.0
+value = 1000.0
+texture_progress = ExtResource( 3 )
+
+[node name="Curar" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Timer_Animacio" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="Curar" to="." method="_on_Curar_timeout"]
+[connection signal="timeout" from="Timer_Animacio" to="." method="_on_Timer_Animacio_timeout"]

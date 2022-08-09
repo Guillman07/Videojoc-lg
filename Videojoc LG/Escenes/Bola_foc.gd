@@ -19,11 +19,14 @@ func destruir():
 func _on_Area2D_area_entered(area):
 	destruir()
 
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Protagonista"):
 		pass
+	if body.is_in_group("Enemic"):
+		body.dany(20)
+		destruir()
 	else:
 		destruir()
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
