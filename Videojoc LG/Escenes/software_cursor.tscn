@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Imatges/Plant_spell/Plant_spell1.png" type="Texture" id=1]
+[ext_resource path="res://Escenes/software_cursor.gd" type="Script" id=2]
+[ext_resource path="res://Imatges/HUD/Cursors4.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Basic",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Conjur_planta",
+"speed": 5.0
+} ]
+
+[node name="software_cursor" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
+position = Vector2( -41, 61 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+animation = "Basic"

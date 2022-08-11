@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const bola_foc_Path = preload("res://Escenes/Bola_foc.tscn")
+const conjur_planta_Path = preload("res://Escenes/Conjur_planta.tscn")
 
 onready var Temps_atac = $Temps_atac
 var velocitat = 200
@@ -15,8 +16,9 @@ func _process(delta):
 		var direccio_bola_foc = self.global_position.direction_to(get_global_mouse_position())
 		bola_foc(direccio_bola_foc)
 		
+	if Input.is_action_just_pressed("E") and Temps_atac.is_stopped(): #and energia >= X
+		conjur_planta()
 		
-	$Node2D.look_at(get_global_mouse_position())
 	if Input.is_action_pressed("Est"):
 		moviment.x += 1
 	if Input.is_action_pressed("Oest"):
@@ -28,6 +30,7 @@ func _process(delta):
 	if moviment.length() > 0:
 		moviment = moviment.normalized() * velocitat
 		
+	$Node2D.look_at(get_global_mouse_position())
 	position += moviment * delta
 	moviment = move_and_slide(moviment, Vector2.UP)
 	animacio(moviment)
@@ -57,3 +60,14 @@ func bola_foc(direccio_bola_foc : Vector2):
 		Temps_atac.start()
 
 		#energia -= X
+func conjur_planta():
+	#get_parent().get_child("software_cursor") NI IDEA     CANVIAR ANIMACIO DEL CURSOR
+	
+	if Input.is_action_just_pressed("Confirmar") and Temps_atac.is_stopped():
+		$Conjur_planta.play("Animacio")
+		var conjur_planta = conjur_planta_Path.instance()
+		get_tree().current_scene.add_child(conjur_planta) 
+		conjur_planta.position = get_global_mouse_position()
+		
+	Temps_atac.wait_time = 3
+	Temps_atac.start()
