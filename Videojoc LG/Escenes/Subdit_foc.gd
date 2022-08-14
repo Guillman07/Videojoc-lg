@@ -8,6 +8,9 @@ var velocitat = Vector2.ZERO
 var cami: Array = [] 
 var LevelNavigation: Navigation2D = null
 var Player = null
+var player_detectat: bool = false 
+
+onready var Ldv = $Linea_de_visio
 
 func _ready():
 	yield(get_tree(),"idle_frame")
@@ -17,13 +20,24 @@ func _ready():
 	if tree.has_group("Protagonista"):
 		Player = tree.get_nodes_in_group("Protagonista")[0]
 
-func _process(delta):
-	if Player and LevelNavigation:
-		genera_cami()
-		busca_seguent_pos()
+func _physics_process(delta):
+	if Player: #and LevelNavigation
+		Ldv.look_at(Player.global_position)
+		check_player_in_detection()
+		if player_detectat: 
+			genera_cami()
+			busca_seguent_pos()
 	moviment()
 #aproparse al prota per arribar al rango suicient de atac simple
 
+func check_player_in_detection() -> bool:
+	var collider = Ldv.get_collider()
+	if collider and collider.is_in_group("Protagonista"):
+		player_detectat = true
+		print("raycast collided")
+		return true
+	return false
+		
 func busca_seguent_pos():
 	if cami.size() > 0:
 		velocitat = global_position.direction_to(cami[1]) * velocitat_base

@@ -16,6 +16,8 @@ animations = [ {
 } ]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,3 +32,8 @@ animation = "Idle"
 position = Vector2( 36, -5 )
 
 [node name="Timer_atac_simple" type="Timer" parent="."]
+
+[node name="Linea_de_visio" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 70, 0 )
+collision_mask = 3
