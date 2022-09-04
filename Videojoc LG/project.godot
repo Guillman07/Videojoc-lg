@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "JSONBeautifier",
+"language": "GDScript",
+"path": "res://addons/json_beautifier/json_beautifier.gd"
+}, {
+"base": "Node",
+"class": "Persistence",
+"language": "GDScript",
+"path": "res://addons/PersistenceNode/persistence_node.gd"
+} ]
+_global_script_class_icons={
+"JSONBeautifier": "",
+"Persistence": "res://addons/PersistenceNode/icon.png"
+}
+
 [application]
 
 config/name="Videojoc Lg"
-run/main_scene="res://Escenes/World.tscn"
+run/main_scene="res://Escenes/Menu.tscn"
 config/icon="res://Imatges/icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/PersistenceNode/plugin.cfg" )
 
 [input]
 
