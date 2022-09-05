@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Imatges/Menu/Background_menu.png" type="Texture" id=1]
 [ext_resource path="res://Escenes/Menu.gd" type="Script" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://Imatges/Menu/Juga_boto4.png" type="Texture" id=13]
 [ext_resource path="res://Imatges/Menu/Juga_boto5.png" type="Texture" id=14]
 [ext_resource path="res://Imatges/Menu/Juga_boto3.png" type="Texture" id=15]
+[ext_resource path="res://Imatges/Menu/Quit_button3.png" type="Texture" id=16]
+[ext_resource path="res://Imatges/Menu/Quit_button4.png" type="Texture" id=17]
+[ext_resource path="res://Imatges/Menu/Quit_button1.png" type="Texture" id=18]
+[ext_resource path="res://Imatges/Menu/Quit_button2.png" type="Texture" id=19]
+[ext_resource path="res://Imatges/Menu/Quit_button5.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,11 +51,6 @@ animations = [ {
 "name": "select",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "select_cat",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "confirm",
@@ -61,9 +61,32 @@ animations = [ {
 "name": "idle_cat",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "select_cat",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "confirm_cat",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "select",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "confirm",
 "speed": 5.0
 } ]
 
@@ -126,9 +149,26 @@ rect_scale = Vector2( 1.25, 1.25 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Play"]
 position = Vector2( 48, 46 )
 frames = SubResource( 2 )
-animation = "select_cat"
+animation = "idle"
 
 [node name="TimerPlay" type="Timer" parent="Play"]
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = 853.0
+margin_top = 496.0
+margin_right = 893.0
+margin_bottom = 536.0
+rect_scale = Vector2( 4, 1.4 )
+
+[node name="TimerQuit" type="Timer" parent="Quit"]
+wait_time = 0.7
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Quit"]
+position = Vector2( 19.0946, 31.3821 )
+scale = Vector2( 0.50249, 1.36444 )
+frames = SubResource( 3 )
+animation = "idle"
+playing = true
 
 [connection signal="mouse_entered" from="Configuracio" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="Configuracio" to="." method="_on_Configuracio_mouse_exited"]
@@ -138,3 +178,7 @@ animation = "select_cat"
 [connection signal="mouse_exited" from="Play" to="." method="_on_Play_mouse_exited"]
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="timeout" from="Play/TimerPlay" to="." method="_on_TimerPlay_timeout"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_Quit_mouse_exited"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="Quit/TimerQuit" to="." method="_on_TimerQuit_timeout"]

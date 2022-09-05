@@ -30,24 +30,39 @@ func _on_Configuracio_mouse_exited():
 
 
 func _on_Play_pressed():
-	if Global.llengua == "English":
-		$Play/AnimatedSprite2.play("confirm")
-	if Global.llengua == "Catala":
-		$Play/AnimatedSprite2.play("confirm_cat")
+	#if Global.llengua == "English":
+	$Play/AnimatedSprite2.play("confirm")
+	#if Global.llengua == "Catala":
+		#$Play/AnimatedSprite2.play("confirm_cat")
 	$Play/TimerPlay.start()
 
 func _on_TimerPlay_timeout():
 	get_tree().change_scene("res://Escenes/World.tscn")
 
-
 func _on_Play_mouse_entered():
-	if Global.llengua == "English":
+	#if Global.llengua == "English":
 		$Play/AnimatedSprite2.play("select")
-	if Global.llengua == "Catala":
-		$Play/AnimatedSprite2.play("select_cat")
+	#if Global.llengua == "Catala":
+		#$Play/AnimatedSprite2.play("select_cat")
 		
 func _on_Play_mouse_exited():
-	if Global.llengua == "English":
+	#if Global.llengua == "English":
 		$Play/AnimatedSprite2.play("idle")
-	if Global.llengua == "Catala":
-		$Play/AnimatedSprite2.play("idle_cat")
+	#if Global.llengua == "Catala":
+		#$Play/AnimatedSprite2.play("idle_cat")
+
+
+
+
+func _on_Quit_pressed():
+	$Quit/AnimatedSprite.play("confirm")
+	$Quit/TimerQuit.start()
+
+func _on_Quit_mouse_entered():
+	$Quit/AnimatedSprite.play("select")
+
+func _on_Quit_mouse_exited():
+	$Quit/AnimatedSprite.play("idle")
+
+func _on_TimerQuit_timeout():
+	get_tree().quit()
