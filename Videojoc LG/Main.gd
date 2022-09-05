@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var joc_info = $joc_info.get_data()
+	var joc_info = $joc_info.get_data("")
 	
 	joc_info["Idioma"] = {
 		"idioma" : "English"
@@ -19,6 +19,8 @@ func _ready():
 	}
 	 
 	$joc_info.save_data()
+	
+	print_debug(joc_info["Idioma"])
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
