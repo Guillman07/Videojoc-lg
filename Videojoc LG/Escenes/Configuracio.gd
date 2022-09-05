@@ -2,6 +2,7 @@ extends Control
 
 onready var ResOptionButton = $Control/Pantalla/HBoxContainer2/OptionButton
 onready var FullscreenToggle  = $Control/Pantalla/HBoxContainer/FullscreenToggle
+onready var LanguageOptionButton = $Control/HBoxContainer/Language
 
 var Resolutions: Dictionary = {"3840x2160":Vector2(3840,2160),
 								"2560x1440":Vector2(2560,1440),
@@ -44,4 +45,15 @@ func _on_FullscreenToggle_toggled(button_pressed):
 		OS.center_window()
 
 
+#func idioma():
+	#if Idioma == "Catala":
+		#$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
+		#$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolució"
+	#if Idioma == "English":
+		#$Control/Pantalla/HBoxContainer/Label.text = "Fullscreen"
+		#$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
 
+
+
+func _on_Language_item_selected(index):
+	pass # Replace with function body.

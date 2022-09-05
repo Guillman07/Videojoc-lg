@@ -12,18 +12,16 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Pantalla" type="VBoxContainer" parent="Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 240.0
-margin_right = 1004.0
-margin_bottom = 840.0
+margin_left = 115.0
+margin_top = 398.0
+margin_right = 176.0
+margin_bottom = 406.0
 rect_scale = Vector2( 0.992543, 0.948286 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Pantalla"]
-margin_right = 1024.0
+margin_right = 101.0
 margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="Control/Pantalla/HBoxContainer"]
@@ -39,7 +37,7 @@ margin_bottom = 24.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/Pantalla"]
 margin_top = 28.0
-margin_right = 1024.0
+margin_right = 101.0
 margin_bottom = 48.0
 
 [node name="Resolution" type="Label" parent="Control/Pantalla/HBoxContainer2"]
@@ -53,5 +51,41 @@ margin_left = 72.0
 margin_right = 101.0
 margin_bottom = 20.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_left = 342.0
+margin_top = 406.0
+margin_right = 434.0
+margin_bottom = 446.0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+margin_top = 13.0
+margin_right = 59.0
+margin_bottom = 27.0
+text = "Language"
+
+[node name="Language" type="OptionButton" parent="Control/HBoxContainer"]
+margin_left = 63.0
+margin_right = 92.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+margin_left = 552.0
+margin_top = 405.0
+margin_right = 679.0
+margin_bottom = 445.0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer2"]
+margin_top = 13.0
+margin_right = 49.0
+margin_bottom = 27.0
+text = "Volume"
+
+[node name="SpinBox" type="SpinBox" parent="Control/HBoxContainer2"]
+margin_left = 53.0
+margin_right = 127.0
+margin_bottom = 40.0
+value = 50.0
+
 [connection signal="toggled" from="Control/Pantalla/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
 [connection signal="item_selected" from="Control/Pantalla/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="Control/HBoxContainer/Language" to="." method="_on_Language_item_selected"]
