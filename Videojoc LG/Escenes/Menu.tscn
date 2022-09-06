@@ -61,14 +61,14 @@ animations = [ {
 "name": "idle_cat",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "select_cat",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "confirm_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "select_cat",
 "speed": 5.0
 } ]
 
