@@ -10,7 +10,7 @@ extends Control
 func _ready():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("idle")
-	if Global.Idioma == "Catala":
+	if Global.Idioma == "Català":
 		$Play/AnimatedSprite2.play("idle_cat")
 
 
@@ -35,7 +35,7 @@ func _on_Configuracio_mouse_exited():
 func _on_Play_pressed():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("confirm")
-	if Global.Idioma == "Catala":
+	if Global.Idioma == "Català":
 		$Play/AnimatedSprite2.play("confirm_cat")
 	$Play/TimerPlay.start()
 
@@ -45,13 +45,13 @@ func _on_TimerPlay_timeout():
 func _on_Play_mouse_entered():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("select")
-	if Global.Idioma == "Catala":
+	if Global.Idioma == "Català":
 		$Play/AnimatedSprite2.play("select_cat")
 		
 func _on_Play_mouse_exited():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("idle")
-	if Global.Idioma == "Catala":
+	if Global.Idioma == "Català":
 		$Play/AnimatedSprite2.play("idle_cat")
 
 
