@@ -71,3 +71,6 @@ func conjur_planta():
 		
 	Temps_atac.wait_time = 3
 	Temps_atac.start()
+
+func posicio():
+	self.position == Global.Player_pos

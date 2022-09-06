@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Escenes/Configuracio.gd" type="Script" id=1]
+[ext_resource path="res://Imatges/Menu/Back_button3.png" type="Texture" id=2]
+[ext_resource path="res://Imatges/Menu/Back_button2.png" type="Texture" id=3]
+[ext_resource path="res://Imatges/Menu/Back_button1.png" type="Texture" id=4]
+[ext_resource path="res://Imatges/Menu/Background_menu2.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "confirm",
+"speed": 7.0
+} ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -11,82 +28,119 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="Control" type="Control" parent="Control"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -301.0
+margin_right = 512.0
+margin_bottom = 304.0
+rect_scale = Vector2( 1.00457, 0.998445 )
+texture = ExtResource( 5 )
+
 [node name="Pantalla" type="VBoxContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 115.0
-margin_top = 398.0
-margin_right = 176.0
-margin_bottom = 406.0
+margin_left = 113.0
+margin_top = 386.0
+margin_right = 228.0
+margin_bottom = 416.0
 rect_scale = Vector2( 0.992543, 0.948286 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Pantalla"]
-margin_right = 101.0
-margin_bottom = 24.0
+margin_right = 155.0
+margin_bottom = 34.0
 
 [node name="Label" type="Label" parent="Control/Pantalla/HBoxContainer"]
-margin_top = 5.0
-margin_right = 66.0
-margin_bottom = 19.0
+margin_top = 4.0
+margin_right = 124.0
+margin_bottom = 30.0
 text = "Fullscreen"
 
 [node name="FullscreenToggle" type="CheckBox" parent="Control/Pantalla/HBoxContainer"]
-margin_left = 70.0
-margin_right = 94.0
-margin_bottom = 24.0
+margin_left = 128.0
+margin_right = 152.0
+margin_bottom = 34.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/Pantalla"]
-margin_top = 28.0
-margin_right = 101.0
-margin_bottom = 48.0
+margin_top = 38.0
+margin_right = 155.0
+margin_bottom = 70.0
 
 [node name="Resolution" type="Label" parent="Control/Pantalla/HBoxContainer2"]
 margin_top = 3.0
-margin_right = 68.0
-margin_bottom = 17.0
+margin_right = 122.0
+margin_bottom = 29.0
 text = "Resolution"
 
 [node name="OptionButton" type="OptionButton" parent="Control/Pantalla/HBoxContainer2"]
-margin_left = 72.0
-margin_right = 101.0
-margin_bottom = 20.0
+margin_left = 126.0
+margin_right = 155.0
+margin_bottom = 32.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-margin_left = 342.0
-margin_top = 406.0
-margin_right = 434.0
-margin_bottom = 446.0
+margin_left = 562.0
+margin_top = 274.0
+margin_right = 709.0
+margin_bottom = 314.0
 
-[node name="Label" type="Label" parent="Control/HBoxContainer"]
-margin_top = 13.0
-margin_right = 59.0
-margin_bottom = 27.0
+[node name="Label_Language" type="Label" parent="Control/HBoxContainer"]
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 33.0
 text = "Language"
 
 [node name="Language" type="OptionButton" parent="Control/HBoxContainer"]
-margin_left = 63.0
-margin_right = 92.0
+margin_left = 118.0
+margin_right = 147.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
-margin_left = 552.0
-margin_top = 405.0
-margin_right = 679.0
-margin_bottom = 445.0
+margin_left = 564.0
+margin_top = 336.0
+margin_right = 732.0
+margin_bottom = 376.0
 
-[node name="Label" type="Label" parent="Control/HBoxContainer2"]
-margin_top = 13.0
-margin_right = 49.0
-margin_bottom = 27.0
+[node name="Label_volume" type="Label" parent="Control/HBoxContainer2"]
+margin_top = 7.0
+margin_right = 78.0
+margin_bottom = 33.0
 text = "Volume"
 
 [node name="SpinBox" type="SpinBox" parent="Control/HBoxContainer2"]
-margin_left = 53.0
-margin_right = 127.0
+margin_left = 82.0
+margin_right = 168.0
 margin_bottom = 40.0
 value = 50.0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+anchor_left = 4.275
+anchor_top = -1.225
+anchor_right = 4.275
+anchor_bottom = -1.225
+margin_left = 765.0
+margin_top = 553.0
+margin_right = 768.0
+margin_bottom = 556.0
+rect_scale = Vector2( 12.6041, 12.6358 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/TextureButton"]
+position = Vector2( 0.952072, 1.66195 )
+scale = Vector2( 0.028111, 0.0284571 )
+frames = SubResource( 1 )
+animation = "idle"
 
 [connection signal="toggled" from="Control/Pantalla/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
 [connection signal="item_selected" from="Control/Pantalla/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="Control/HBoxContainer/Language" to="." method="_on_Language_item_selected"]
 [connection signal="value_changed" from="Control/HBoxContainer2/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="animation_finished" from="Control/TextureButton/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

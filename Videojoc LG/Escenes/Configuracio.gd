@@ -14,20 +14,28 @@ var Resolutions: Dictionary = {"3840x2160":Vector2(3840,2160),
 								"1600x900":Vector2(1600,900),
 								"1024x600":Vector2(1024,600),
 								"800x600":Vector2(800,600)}
-var Idiomes_disp = ["Català","English"]
+var Idiomes_disp = ["English","Catala"]
 
 func _ready():
 	AddResolutions()
 	AddIdioma()
 	FullscreenToggle.pressed = OS.is_window_fullscreen()
-	
-	if Global.Idioma == "Català":
+
+func _process(delta):
+	idioma()
+
+func idioma():
+	if Global.Idioma == "Catala":
 		$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
-		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolució"
+		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolucio"
+		$Control/HBoxContainer/Label_Language.text = "Idioma"
+		$Control/HBoxContainer2/Label_volume.text = "Volum"
 	if Global.Idioma == "English":
 		$Control/Pantalla/HBoxContainer/Label.text = "Fullscreen"
 		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
-		
+		$Control/HBoxContainer/Label_Language.text = "Language"
+		$Control/HBoxContainer2/Label_volume.text = "Volume"
+
 func AddResolutions():
 	var CurrentResolution = get_viewport().get_size()
 	
@@ -62,10 +70,21 @@ func _on_FullscreenToggle_toggled(button_pressed):
 
 
 
-# REVISAR
+
 func _on_Language_item_selected(index):
-	Global.Idioma = index
+	Global.canvi_idioma(Idiomes_disp[index])
+	
 
-
+#REVISAR
 func _on_SpinBox_value_changed(value):
 	Global.Volum = value
+
+
+func _on_TextureButton_pressed():
+	$Control/TextureButton/AnimatedSprite.play("confirm")
+	
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $Control/TextureButton/AnimatedSprite.animation == "confirm" :
+		get_tree().change_scene("res://Escenes/Menu.tscn")
