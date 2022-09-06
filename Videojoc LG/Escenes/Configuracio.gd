@@ -14,11 +14,20 @@ var Resolutions: Dictionary = {"3840x2160":Vector2(3840,2160),
 								"1600x900":Vector2(1600,900),
 								"1024x600":Vector2(1024,600),
 								"800x600":Vector2(800,600)}
+var Idiomes_disp = ["Català","English"]
 
 func _ready():
 	AddResolutions()
+	AddIdioma()
 	FullscreenToggle.pressed = OS.is_window_fullscreen()
 	
+	if Global.Idioma == "Català":
+		$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
+		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolució"
+	if Global.Idioma == "English":
+		$Control/Pantalla/HBoxContainer/Label.text = "Fullscreen"
+		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
+		
 func AddResolutions():
 	var CurrentResolution = get_viewport().get_size()
 	
@@ -30,6 +39,10 @@ func AddResolutions():
 		if Resolutions[r] == CurrentResolution:
 			ResOptionButton._select_int(Index)
 		Index += 1
+
+func AddIdioma():
+	for i in Idiomes_disp:
+		LanguageOptionButton.add_item(i)
 
 func _on_OptionButton_item_selected(index):
 	var size = Resolutions.get(ResOptionButton.get_item_text(index))
@@ -45,15 +58,14 @@ func _on_FullscreenToggle_toggled(button_pressed):
 		OS.center_window()
 
 
-#func idioma():
-	#if Idioma == "Catala":
-		#$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
-		#$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolució"
-	#if Idioma == "English":
-		#$Control/Pantalla/HBoxContainer/Label.text = "Fullscreen"
-		#$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
 
 
 
+
+# REVISAR
 func _on_Language_item_selected(index):
-	pass # Replace with function body.
+	Global.Idioma = index
+
+
+func _on_SpinBox_value_changed(value):
+	Global.Volum = value

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Imatges/Menu/Background_menu.png" type="Texture" id=1]
 [ext_resource path="res://Escenes/Menu.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Imatges/Menu/Quit_button1.png" type="Texture" id=18]
 [ext_resource path="res://Imatges/Menu/Quit_button2.png" type="Texture" id=19]
 [ext_resource path="res://Imatges/Menu/Quit_button5.png" type="Texture" id=20]
+[ext_resource path="res://Global/Global.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -61,14 +62,14 @@ animations = [ {
 "name": "idle_cat",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "confirm_cat",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "select_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "confirm_cat",
 "speed": 5.0
 } ]
 
@@ -149,7 +150,7 @@ rect_scale = Vector2( 1.25, 1.25 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Play"]
 position = Vector2( 48, 46 )
 frames = SubResource( 2 )
-animation = "idle"
+animation = "confirm_cat"
 
 [node name="TimerPlay" type="Timer" parent="Play"]
 
@@ -169,6 +170,7 @@ scale = Vector2( 0.50249, 1.36444 )
 frames = SubResource( 3 )
 animation = "idle"
 playing = true
+script = ExtResource( 21 )
 
 [connection signal="mouse_entered" from="Configuracio" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="Configuracio" to="." method="_on_Configuracio_mouse_exited"]
