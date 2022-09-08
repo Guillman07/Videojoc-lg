@@ -58,15 +58,26 @@ func _on_Play_mouse_exited():
 
 #boto quit
 func _on_Quit_pressed():
-	$Quit/AnimatedSprite.play("confirm")
-	
+	if Global.Idioma == "English":
+		$Quit/AnimatedSprite.play("confirm")
+	if Global.Idioma == "Catala":
+		$Quit/AnimatedSprite.play("confirm_cat")
 
 func _on_Quit_mouse_entered():
-	$Quit/AnimatedSprite.play("select")
+	
+	if Global.Idioma == "English":
+		$Quit/AnimatedSprite.play("select")
+	if Global.Idioma == "Catala":
+		$Quit/AnimatedSprite.play("select_cat")
 
 func _on_Quit_mouse_exited():
-	$Quit/AnimatedSprite.play("idle")
+	if Global.Idioma == "English":
+		$Quit/AnimatedSprite.play("idle")
+	if Global.Idioma == "Catala":
+		$Quit/AnimatedSprite.play("idle_cat")
 
 func _on_AnimatedSprite_animation_finished():
 	if $Quit/AnimatedSprite.animation == "confirm" :
+		get_tree().quit()
+	if $Quit/AnimatedSprite.animation == "confirm_cat" :
 		get_tree().quit()
