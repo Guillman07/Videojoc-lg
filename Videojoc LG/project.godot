@@ -28,6 +28,7 @@ _global_script_class_icons={
 
 config/name="Videojoc Lg"
 run/main_scene="res://Global/Global.tscn"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -39,7 +40,7 @@ Pause="*res://Escenes/Pause.tscn"
 [display]
 
 window/size/fullscreen=true
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [editor_plugins]
