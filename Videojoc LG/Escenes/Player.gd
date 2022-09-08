@@ -1,42 +1,5 @@
-extends Entity
+extends KinematicBody2D
 
-# === Abilities ===
-var move = load_ability("move")
-
-# === State ===
-
-func interact():
-	var c = _get_collisions()
-	if c:
-		if c.get_groups()[0] == "interactable": c.interact()
-		
-func _read_input():
-	velocity = Vector2()
-	look_at(get_global_mouse_position())
-	
-	if Input.is_action_pressed("Nord"): move.execute(self,"up")
-	if Input.is_action_pressed("Sud"): move.execute(self,"down")
-	if Input.is_action_pressed("Est"): move.execute(self,"right")
-	if Input.is_action_pressed("Oest"): move.execute(self,"up")
-	
-	if last_ability > global_cooldown:
-		if Input.is_action_pressed("interact"):
-			interact()
-			last_ability = 0
-
-func _get_collisions():
-	var c = get_last_slide_collision()
-	if (c && c.get_collider()): return c.get_collider()
-	else: return null
-
-func _physics_process(delta):
-	_read_input()
-
-
-
-
-
-# == Meu codi==
 const bola_foc_Path = preload("res://Escenes/Bola_foc.tscn")
 const conjur_planta_Path = preload("res://Escenes/Conjur_planta.tscn")
 
