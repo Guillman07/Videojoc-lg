@@ -11,6 +11,7 @@ var max_health : int = 100
 var current_health : int = 100
 var health_regen : int = 1
 var armadura : int = 0
+var shield : int = 0
 var r = 1
 
 var max_poder : int = 100
@@ -95,7 +96,11 @@ func conjur_planta():
 
 
 func damage_player(amount):
-	
+	if shield > 0:
+		shield -= amount
+		if shield < 0:
+			amount = shield * (-1)
+			shield = 0
 	if (armadura > 0): amount = amount * ((100 - armadura) * .01)
 	if (current_health > amount): current_health -= amount
 	else :
@@ -135,5 +140,6 @@ func modify_poder(amount):
 	else: current_poder += amount
 	
 func shield(amount):
-	$Tween.interpolate_property($Escut,'value',$Escut.value, amount, 0.2,Tween.TRANS_LINEAR)
+	shield += amount
+	$Tween.interpolate_property($Escut,'value',$Escut.value, shield, 0.2,Tween.TRANS_LINEAR)
 	$Tween.start()
