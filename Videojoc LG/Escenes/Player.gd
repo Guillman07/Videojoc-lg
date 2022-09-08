@@ -7,10 +7,27 @@ onready var Temps_atac = $Temps_atac
 var velocitat = 200
 var moviment = Vector2()
 
+var max_health : int = 100
+var current_health : int = 100
+var health_regen : int = 1
+var armadura : int = 0
+var r = 1
+
+var max_poder : int = 100
+var current_poder : int = 100
+var poder_regen : int = 1
+
 func _ready():
 	pass 
 
 func _process(delta):
+	position()
+	inputs_check(delta)
+	if r == 1:
+		$Regenerar.start()
+		r -= 1
+	
+func inputs_check(delta):
 	moviment = Vector2()
 	if Input.is_action_just_pressed("Q") and Temps_atac.is_stopped(): #and energia >= X
 		var direccio_bola_foc = self.global_position.direction_to(get_global_mouse_position())
@@ -47,6 +64,10 @@ func animacio(moviment):
 	if abs(moviment.x) < 0.1:
 		$AnimatedSprite.play("Idle")
 
+func position():
+	var pos = self.position
+	Global.Player_pos(pos)
+	
 func bola_foc(direccio_bola_foc : Vector2):
 	if bola_foc_Path:
 		var bola_foc = bola_foc_Path.instance()
@@ -72,5 +93,47 @@ func conjur_planta():
 	Temps_atac.wait_time = 3
 	Temps_atac.start()
 
-func posicio():
-	self.position == Global.Player_pos
+
+func damage_player(amount):
+	
+	if (armadura > 0): amount = amount * ((100 - armadura) * .01)
+	if (current_health > amount): current_health -= amount
+	else :
+		die()
+	$AnimatedSprite.modulate = "030101"
+	$Tween.interpolate_property($Vida,'value',$Vida.value, current_health, 0.2,Tween.TRANS_LINEAR)
+	$Tween.start()
+	$Rebent.start()
+
+		
+func die():
+	get_tree().quit()
+	
+func _on_Rebent_timeout():
+	$AnimatedSprite.modulate = "ffffff"
+
+func regen_health():
+	if (current_health < max_health):
+		if ((health_regen + current_health) > max_health):
+			current_health = max_health
+		else: current_health += health_regen
+	
+func _on_Regenerar_timeout():
+	regen_health()
+	r += 1
+
+func regen_poder():
+	if (current_poder < max_poder):
+		if ((poder_regen + current_poder) > max_poder):
+			current_poder = max_poder
+		else: current_poder += poder_regen
+
+func modify_poder(amount):
+	var new_poder = current_poder + amount
+	if (new_poder < 0): current_poder = 0
+	if (new_poder > max_poder): current_poder = max_poder
+	else: current_poder += amount
+	
+func shield(amount):
+	$Tween.interpolate_property($Escut,'value',$Escut.value, amount, 0.2,Tween.TRANS_LINEAR)
+	$Tween.start()

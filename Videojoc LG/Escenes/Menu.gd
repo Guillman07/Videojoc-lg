@@ -17,6 +17,7 @@ func _ready():
 		$Configuracio/Label.text = "Configuracio"
 
 
+
 #Boto configuracio
 func _on_TextureButton_pressed():
 	$Configuracio/AnimatedSprite.play("confirm")
@@ -26,7 +27,7 @@ func _on_Timer_timeout():
 	get_tree().change_scene("res://Escenes/Configuracio.tscn")
 
 func _on_TextureButton_mouse_entered():
-	#Global.Clic()
+	Global.Clic()
 	$Configuracio/AnimatedSprite.play("select")
 	$Configuracio/Label.show()
 	
@@ -48,12 +49,12 @@ func _on_TimerPlay_timeout():
 	get_tree().change_scene("res://Escenes/World.tscn")
 
 func _on_Play_mouse_entered():
-	#Global.Clic()
+	Global.Clic()
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("select")
 	if Global.Idioma == "Catala":
 		$Play/AnimatedSprite2.play("select_cat")
-		
+	
 func _on_Play_mouse_exited():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("idle")
@@ -70,7 +71,7 @@ func _on_Quit_pressed():
 		$Quit/AnimatedSprite.play("confirm_cat")
 		
 func _on_Quit_mouse_entered():
-	#Global.Clic()
+	Global.Clic()
 	if Global.Idioma == "English":
 		$Quit/AnimatedSprite.play("select")
 	if Global.Idioma == "Catala":
@@ -87,3 +88,6 @@ func _on_AnimatedSprite_animation_finished():
 		get_tree().quit()
 	if $Quit/AnimatedSprite.animation == "confirm_cat" :
 		get_tree().quit()
+
+
+

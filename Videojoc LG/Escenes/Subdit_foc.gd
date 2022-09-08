@@ -9,8 +9,10 @@ var cami: Array = []
 var LevelNavigation: Navigation2D = null
 var Player = null
 var player_detectat: bool = false 
+var current_health = 100
 
 onready var Ldv = $Linea_de_visio
+onready var Temps_atac = $Temps_atac
 
 func _ready():
 	yield(get_tree(),"idle_frame")
@@ -21,6 +23,11 @@ func _ready():
 		Player = tree.get_nodes_in_group("Protagonista")[0]
 
 func _physics_process(delta):
+	if Temps_atac.is_stopped(): 
+		var direccio_bola_foc = self.global_position.direction_to(Global.Player_pos)
+		bola_foc(direccio_bola_foc)
+	$Node2D.look_at(Global.Player_pos)
+	
 	if Player: #and LevelNavigation
 		Ldv.look_at(Player.global_position)
 		check_player_in_detection()
@@ -50,17 +57,27 @@ func genera_cami():
 	if LevelNavigation != null and Player != null:
 		cami = LevelNavigation.get_simple_path(global_position,Player.global_position, false)
 	
-func atac_simple():
-	pass
-	#Mini bola de foc, que no es pot fallar, de dany casi nul,carrega energia
-	#amb temps de reload
-func bola_foc():
-	
-	if energia == 100:
-		var Subjecte = Bola_foc.instance()
-		add_child(Subjecte)
-		Subjecte.position = $Position2D.position
-		
-# no fa gaire mal d'impacte pero si que fa bastant de quemadura.
+
 func moviment():
 	velocitat = move_and_slide(velocitat)
+
+func bola_foc(direccio_bola_foc):
+	if Bola_foc:
+		var bola_foc = Bola_foc.instance()
+		get_tree().current_scene.add_child(bola_foc) 
+		bola_foc.global_position = $Node2D/Position2D.global_position
+		
+		var rotacio = direccio_bola_foc.angle()
+		bola_foc.rotation = rotacio
+		
+		Temps_atac.wait_time = 5
+		Temps_atac.start()
+func damage(amount):
+	current_health -= amount
+	$Tween.interpolate_property($Vida,'value',$Vida.value, current_health, 0.2,Tween.TRANS_LINEAR)
+	$Tween.start()
+	die()
+	
+func die():
+	if current_health <= 0:
+		queue_free()

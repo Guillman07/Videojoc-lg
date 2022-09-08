@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Imatges/Fire_ch/Fire_man.png" type="Texture" id=1]
 [ext_resource path="res://Escenes/Subdit_foc.gd" type="Script" id=2]
+[ext_resource path="res://Imatges/HUD/Vida.png" type="Texture" id=3]
+[ext_resource path="res://Imatges/HUD/Dany.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 27.0
@@ -15,7 +17,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="KinematicBody2D" type="KinematicBody2D" groups=["Enemic"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
@@ -28,13 +30,28 @@ shape = SubResource( 2 )
 frames = SubResource( 1 )
 animation = "Idle"
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 36, -5 )
-
-[node name="Timer_atac_simple" type="Timer" parent="."]
+[node name="Temps_atac" type="Timer" parent="."]
+one_shot = true
 
 [node name="Linea_de_visio" type="RayCast2D" parent="."]
 scale = Vector2( 2.7547, 1.81143 )
 enabled = true
 cast_to = Vector2( 70, 0 )
 collision_mask = 3
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Node2D"]
+position = Vector2( 84, -4 )
+
+[node name="Vida" type="TextureProgress" parent="."]
+margin_left = -69.0
+margin_top = -104.0
+margin_right = 111.0
+margin_bottom = 76.0
+rect_scale = Vector2( 0.75, 0.075 )
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]

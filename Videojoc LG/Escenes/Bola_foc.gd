@@ -24,9 +24,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Protagonista"):
-		pass
+		body.damage_player(20)
+		destruir()
 	if body.is_in_group("Enemic"):
-		body.dany(20)
+		body.damage(20)
 		destruir()
 	else:
 		destruir()
