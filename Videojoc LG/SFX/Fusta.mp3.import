@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fusta.mp3-51578ed8a3947ad1a99401f6854673e0.mp3str"
+
+[deps]
+
+source_file="res://SFX/Fusta.mp3"
+dest_files=[ "res://.import/Fusta.mp3-51578ed8a3947ad1a99401f6854673e0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
