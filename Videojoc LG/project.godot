@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Escenes/Entity.gd"
+}, {
 "base": "Node",
 "class": "JSONBeautifier",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://addons/PersistenceNode/persistence_node.gd"
 } ]
 _global_script_class_icons={
+"Entity": "",
 "JSONBeautifier": "",
 "Persistence": "res://addons/PersistenceNode/icon.png"
 }
