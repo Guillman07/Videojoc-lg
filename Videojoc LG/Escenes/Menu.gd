@@ -6,6 +6,10 @@ func _ready():
 		$Play/AnimatedSprite2.play("idle")
 	if Global.Idioma == "Catala":
 		$Play/AnimatedSprite2.play("idle_cat")
+	if Global.Idioma == "English":
+		$Quit/AnimatedSprite.play("idle")
+	if Global.Idioma == "Catala":
+		$Quit/AnimatedSprite.play("idle_cat")
 		
 	if Global.Idioma == "English":
 		$Configuracio/Label.text = "Options"

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 onready var ResOptionButton = $Control/Pantalla/HBoxContainer2/OptionButton
 onready var FullscreenToggle  = $Control/Pantalla/HBoxContainer/FullscreenToggle
@@ -17,24 +17,27 @@ var Resolutions: Dictionary = {"3840x2160":Vector2(3840,2160),
 var Idiomes_disp = ["English","Catala"]
 
 func _ready():
+	set_visible(false)
 	AddResolutions()
 	AddIdioma()
 	FullscreenToggle.pressed = OS.is_window_fullscreen()
-
 func _process(delta):
 	idioma()
 
 func idioma():
-	if Global.Idioma == "Catala":
-		$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
-		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolucio"
-		$Control/HBoxContainer/Label_Language.text = "Idioma"
-		$Control/HBoxContainer2/Label_volume.text = "Volum"
 	if Global.Idioma == "English":
+		$Control/Button.text = "Continue"
 		$Control/Pantalla/HBoxContainer/Label.text = "Fullscreen"
 		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
 		$Control/HBoxContainer/Label_Language.text = "Language"
 		$Control/HBoxContainer2/Label_volume.text = "Volume"
+	if Global.Idioma == "Catala":
+		$Control/Button.text = "Seguir jugant"
+		$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
+		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolucio"
+		$Control/HBoxContainer/Label_Language.text = "Idioma"
+		$Control/HBoxContainer2/Label_volume.text = "Volum"
+		
 
 func AddResolutions():
 	var CurrentResolution = get_viewport().get_size()
@@ -51,6 +54,13 @@ func AddResolutions():
 func AddIdioma():
 	for i in Idiomes_disp:
 		LanguageOptionButton.add_item(i)
+
+func _input(event):
+	
+	if event.is_action_pressed("ui_cancel"):
+		set_visible(!get_tree().paused)
+		get_tree().paused = !get_tree().paused
+
 
 func _on_OptionButton_item_selected(index):
 	var size = Resolutions.get(ResOptionButton.get_item_text(index))
@@ -80,13 +90,16 @@ func _on_SpinBox_value_changed(value):
 	Global.Volum = value
 
 
-func _on_TextureButton_pressed():
-	$Control/TextureButton/AnimatedSprite.play("confirm")
+func _on_Button_pressed():
+	print("a")
+	get_tree().paused = false
+	set_visible(false)
 	
+func set_visible(is_visible):
+	for node in get_children():
+		node.visible = is_visible
 
-func _on_AnimatedSprite_animation_finished():
-	if $Control/TextureButton/AnimatedSprite.animation == "confirm" :
-		get_tree().change_scene("res://Escenes/Menu.tscn")
 
 
+	
 

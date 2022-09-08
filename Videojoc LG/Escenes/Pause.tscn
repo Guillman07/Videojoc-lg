@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pause.gd" type="Script" id=1]
+[ext_resource path="res://Imatges/HUD/Black.png" type="Texture" id=2]
+
+[node name="Pause" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Pantalla" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 66.0
+margin_top = 50.0
+margin_right = -798.0
+margin_bottom = -480.0
+rect_scale = Vector2( 0.992543, 0.948286 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Pantalla"]
+margin_right = 160.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/Pantalla/HBoxContainer"]
+margin_top = 4.0
+margin_right = 124.0
+margin_bottom = 30.0
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckBox" parent="Control/Pantalla/HBoxContainer"]
+margin_left = 128.0
+margin_right = 152.0
+margin_bottom = 34.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Pantalla"]
+margin_top = 38.0
+margin_right = 160.0
+margin_bottom = 70.0
+
+[node name="Resolution" type="Label" parent="Control/Pantalla/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 122.0
+margin_bottom = 29.0
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="Control/Pantalla/HBoxContainer2"]
+margin_left = 126.0
+margin_right = 155.0
+margin_bottom = 32.0
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_left = 430.0
+margin_top = 50.0
+margin_right = 577.0
+margin_bottom = 90.0
+
+[node name="Label_Language" type="Label" parent="Control/HBoxContainer"]
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 33.0
+text = "Language"
+
+[node name="Language" type="OptionButton" parent="Control/HBoxContainer"]
+margin_left = 118.0
+margin_right = 147.0
+margin_bottom = 40.0
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+margin_left = 801.0
+margin_top = 50.0
+margin_right = 969.0
+margin_bottom = 90.0
+
+[node name="Label_volume" type="Label" parent="Control/HBoxContainer2"]
+margin_top = 7.0
+margin_right = 78.0
+margin_bottom = 33.0
+text = "Volume"
+
+[node name="SpinBox" type="SpinBox" parent="Control/HBoxContainer2"]
+margin_left = 82.0
+margin_right = 168.0
+margin_bottom = 40.0
+value = 50.0
+align = 1
+
+[node name="Button" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -59.0
+margin_top = -16.0
+margin_right = 59.0
+margin_bottom = 16.0
+text = "Continue"
+flat = true
+
+[connection signal="toggled" from="Control/Pantalla/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
+[connection signal="item_selected" from="Control/Pantalla/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="Control/HBoxContainer/Language" to="." method="_on_Language_item_selected"]
+[connection signal="value_changed" from="Control/HBoxContainer2/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

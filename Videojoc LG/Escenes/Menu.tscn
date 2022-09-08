@@ -59,24 +59,24 @@ animations = [ {
 "name": "select",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "confirm",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "confirm_cat",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "select_cat",
+"name": "confirm",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "idle_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "select_cat",
 "speed": 5.0
 } ]
 
@@ -97,24 +97,24 @@ animations = [ {
 "name": "select",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "confirm",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 26 ), ExtResource( 28 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "confirm_cat",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "select_cat",
+"name": "confirm",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "idle_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "select_cat",
 "speed": 5.0
 } ]
 

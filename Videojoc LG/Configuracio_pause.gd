@@ -65,12 +65,6 @@ func _on_FullscreenToggle_toggled(button_pressed):
 		OS.set_window_size(size)
 		OS.center_window()
 
-
-
-
-
-
-
 func _on_Language_item_selected(index):
 	Global.canvi_idioma(Idiomes_disp[index])
 	
@@ -79,14 +73,9 @@ func _on_Language_item_selected(index):
 func _on_SpinBox_value_changed(value):
 	Global.Volum = value
 
-
 func _on_TextureButton_pressed():
-	$Control/TextureButton/AnimatedSprite.play("confirm")
+	$Control/Control2/TextureButton/AnimatedSprite.play("confirm")
 	
-
 func _on_AnimatedSprite_animation_finished():
-	if $Control/TextureButton/AnimatedSprite.animation == "confirm" :
-		get_tree().change_scene("res://Escenes/Menu.tscn")
-
-
-
+	if $Control/Control2/TextureButton/AnimatedSprite.animation == "confirm" :
+		get_node("/root/Pause").back()

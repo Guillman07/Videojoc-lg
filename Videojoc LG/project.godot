@@ -34,6 +34,7 @@ config/windows_native_icon="res://icon.ico"
 [autoload]
 
 Global="*res://Global/Global.gd"
+Pause="*res://Escenes/Pause.tscn"
 
 [display]
 
