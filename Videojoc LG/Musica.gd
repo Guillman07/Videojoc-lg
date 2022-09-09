@@ -5,6 +5,7 @@ var menu_music = preload("res://SFX/Clic.wav")
 
 
 func _ready():
+	Global.Musica = self
 	play_menu_music()
 
 

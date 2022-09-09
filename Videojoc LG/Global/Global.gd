@@ -4,7 +4,7 @@ var Idioma = "English"
 var Volum = 50
 var Player_pos = Vector2()
 
-onready var Musica = $Musica/Clic
+var Musica
 
 
 func canvi_idioma(idioma):
@@ -13,7 +13,7 @@ func canvi_idioma(idioma):
 
 func Clic():
 	pass
-	#Musica.play_clic()
+	Musica.play_clic()
 
 func Player_pos(pos):
 	Player_pos = pos

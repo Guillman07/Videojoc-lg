@@ -11,7 +11,7 @@ var max_health : int = 100
 var current_health : int = 100
 var health_regen : int = 1
 var armadura : int = 0
-var shield : int = 0
+var shield : int = 0 setget shield
 var r = 1
 
 var max_poder : int = 100
@@ -96,15 +96,20 @@ func conjur_planta():
 
 
 func damage_player(amount):
+	var string = "ai: %d\tvi: %d\n" % [shield, current_health]
+	if (armadura > 0): amount = amount * ((100 - armadura) * 0.01)
 	if shield > 0:
-		shield -= amount
+		self.shield -= amount
 		if shield < 0:
 			amount = shield * (-1)
 			shield = 0
-	if (armadura > 0): amount = amount * ((100 - armadura) * .01)
+		else:
+			amount = 0
 	if (current_health > amount): current_health -= amount
 	else :
 		die()
+	string += "af: %d\tvf: %d" % [shield, current_health]
+	$Label.text = string
 	$AnimatedSprite.modulate = "030101"
 	$Tween.interpolate_property($Vida,'value',$Vida.value, current_health, 0.2,Tween.TRANS_LINEAR)
 	$Tween.start()
@@ -140,6 +145,6 @@ func modify_poder(amount):
 	else: current_poder += amount
 	
 func shield(amount):
-	shield += amount
+	shield = amount
 	$Tween.interpolate_property($Escut,'value',$Escut.value, shield, 0.2,Tween.TRANS_LINEAR)
 	$Tween.start()

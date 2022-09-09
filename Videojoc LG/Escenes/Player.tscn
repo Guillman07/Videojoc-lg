@@ -84,5 +84,11 @@ wait_time = 0.5
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[node name="Label" type="Label" parent="."]
+margin_left = -21.0
+margin_top = -121.0
+margin_right = 19.0
+margin_bottom = -95.0
+
 [connection signal="timeout" from="Rebent" to="." method="_on_Rebent_timeout"]
 [connection signal="timeout" from="Regenerar" to="." method="_on_Regenerar_timeout"]
