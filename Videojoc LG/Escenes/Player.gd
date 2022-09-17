@@ -63,8 +63,12 @@ func animacio(moviment):
 	elif moviment.x < -0.1:
 		$AnimatedSprite.play("Run")
 		$AnimatedSprite.flip_h = true
+	elif moviment.y > 2:
+		$AnimatedSprite.play("Run_back")
+	elif moviment.y < 2:
+		$AnimatedSprite.play("Run_back")
 		
-	if abs(moviment.x) < 0.1:
+	if abs(moviment) < 0.1:
 		$AnimatedSprite.play("Idle")
 
 func position():
@@ -118,8 +122,8 @@ func damage_player(amount):
 	$Rebent.start()
 	
 
-func _shield(amount):
-	shield += amount
+func shield(amount):
+	shield = amount
 	$Tween.interpolate_property($Escut,'value',$Escut.value, shield, 0.2,Tween.TRANS_LINEAR)
 	$Tween.start()
 
@@ -151,4 +155,5 @@ func modify_poder(amount):
 	if (new_poder > max_poder): current_poder = max_poder
 	else: current_poder += amount
 	
-
+func slow(amount):
+	velocitat -= amount

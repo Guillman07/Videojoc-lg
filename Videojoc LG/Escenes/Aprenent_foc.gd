@@ -1,5 +1,6 @@
 extends Area2D
 
+
 const Bola_foc = preload("res://Escenes/Bola_foc.tscn")
 var energia = 0
 

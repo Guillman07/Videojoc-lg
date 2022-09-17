@@ -18,4 +18,4 @@ func _ready():
 
 func _on_Shield_body_entered(body):
 	if body.is_in_group("Protagonista"):
-		body._shield(20)
+		body.shield(20)

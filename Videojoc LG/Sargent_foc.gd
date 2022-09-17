@@ -4,12 +4,13 @@ const Bola_foc = preload("res://Escenes/Bola_foc.tscn")
 var energia = 0
 var velocitat_base = 200
 var velocitat = Vector2.ZERO
-
+var dmg = 10
 var cami: Array = [] 
 var LevelNavigation: Navigation2D = null
 var Player = null
 var player_detectat: bool = false 
 var current_health = 100
+var on_area = false
 
 onready var Ldv = $Linea_de_visio
 onready var Temps_atac = $Temps_atac
@@ -23,6 +24,9 @@ func _ready():
 		Player = tree.get_nodes_in_group("Protagonista")[0]
 
 func _physics_process(delta):
+	if on_area == true:
+		$Dps.start
+	
 	if Temps_atac.is_stopped(): 
 		var direccio_bola_foc = self.global_position.direction_to(Global.Player_pos)
 		bola_foc(direccio_bola_foc)
@@ -69,7 +73,6 @@ func bola_foc(direccio_bola_foc):
 		
 		var rotacio = direccio_bola_foc.angle()
 		bola_foc.rotation = rotacio
-		bola_foc.dmg = 20
 		
 		Temps_atac.wait_time = 5
 		Temps_atac.start()
@@ -82,3 +85,14 @@ func damage(amount):
 func die():
 	if current_health <= 0:
 		queue_free()
+
+
+
+func _on_Area_potenciadora_body_entered(body):
+	if body.is_in_group("Protagonista"):
+		body.slow(50)
+
+	if body.is_in_group("Enemic"):
+		pass
+	
+
