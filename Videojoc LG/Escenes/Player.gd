@@ -29,29 +29,30 @@ func _process(delta):
 		r -= 1
 	
 func inputs_check(delta):
-	moviment = Vector2()
-	if Input.is_action_just_pressed("Q") and Temps_atac.is_stopped(): #and energia >= X
-		var direccio_bola_foc = self.global_position.direction_to(get_global_mouse_position())
-		bola_foc(direccio_bola_foc)
-		
-	if Input.is_action_just_pressed("E") and Temps_atac.is_stopped(): #and energia >= X
-		conjur_planta()
-		
-	if Input.is_action_pressed("Est"):
-		moviment.x += 1
-	if Input.is_action_pressed("Oest"):
-		moviment.x -= 1
-	if Input.is_action_pressed("Nord"):
-		moviment.y -= 1
-	if Input.is_action_pressed("Sud"):
-		moviment.y += 1
-	if moviment.length() > 0:
-		moviment = moviment.normalized() * velocitat
-		
-	$Node2D.look_at(get_global_mouse_position())
-	position += moviment * delta
-	moviment = move_and_slide(moviment, Vector2.UP)
-	animacio(moviment)
+	if Global.on_menu == false:
+		moviment = Vector2()
+		if Input.is_action_just_pressed("Q") and Temps_atac.is_stopped(): #and energia >= X
+			var direccio_bola_foc = self.global_position.direction_to(get_global_mouse_position())
+			bola_foc(direccio_bola_foc)
+			
+		if Input.is_action_just_pressed("E") and Temps_atac.is_stopped(): #and energia >= X
+			conjur_planta()
+			
+		if Input.is_action_pressed("Est"):
+			moviment.x += 1
+		if Input.is_action_pressed("Oest"):
+			moviment.x -= 1
+		if Input.is_action_pressed("Nord"):
+			moviment.y -= 1
+		if Input.is_action_pressed("Sud"):
+			moviment.y += 1
+		if moviment.length() > 0:
+			moviment = moviment.normalized() * velocitat
+			
+		$Node2D.look_at(get_global_mouse_position())
+		position += moviment * delta
+		moviment = move_and_slide(moviment, Vector2.UP)
+		animacio(moviment)
 	
 func animacio(moviment):
 	

@@ -8,7 +8,9 @@ func _ready():
 	Global.Musica = self
 	play_menu_music()
 
-
+func _process(delta):
+	if Global.on_menu == true:
+		play_menu_music()
 
 func play_menu_music():
 	$Menu.stream = menu_music

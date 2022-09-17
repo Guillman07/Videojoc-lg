@@ -25,13 +25,14 @@ func idioma():
 		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolution"
 		$Control/HBoxContainer/Label_Language.text = "Language"
 		$Control/HBoxContainer2/Label_volume.text = "Volume"
+		$Control/Button2.text = "Quit"
 	if Global.Idioma == "Catala":
 		$Control/Button.text = "Seguir jugant"
 		$Control/Pantalla/HBoxContainer/Label.text = "Pantalla completa"
 		$Control/Pantalla/HBoxContainer2/Resolution.text = "Resolucio"
 		$Control/HBoxContainer/Label_Language.text = "Idioma"
 		$Control/HBoxContainer2/Label_volume.text = "Volum"
-		
+		$Control/Button2.text = "Surt"
 
 func AddResolutions():
 	var CurrentResolution = get_viewport().get_size()
@@ -92,7 +93,5 @@ func set_visible(is_visible):
 	for node in get_children():
 		node.visible = is_visible
 
-
-
-	
-
+func _on_Button2_pressed():
+	get_tree().quit()

@@ -2,6 +2,10 @@ extends Control
 
 
 func _ready():
+	idioma()
+	Global.on_menu = true
+
+func idioma():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("idle")
 	if Global.Idioma == "Catala":
@@ -47,7 +51,7 @@ func _on_Play_pressed():
 
 func _on_TimerPlay_timeout():
 	get_tree().change_scene("res://Escenes/World.tscn")
-
+	Global.on_menu = false
 func _on_Play_mouse_entered():
 	Global.Clic()
 	if Global.Idioma == "English":
