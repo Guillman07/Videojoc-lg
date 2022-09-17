@@ -37,7 +37,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Movent"
-frame = 2
 playing = true
 
 [node name="Area_potenciadora" type="Area2D" parent="."]

@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 rotation = -1.54033
 frames = SubResource( 2 )
 animation = "Idle"
-frame = 3
+frame = 4
 speed_scale = 2.0
 playing = true
 

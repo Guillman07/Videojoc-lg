@@ -68,7 +68,7 @@ func animacio(moviment):
 	elif moviment.y < 2:
 		$AnimatedSprite.play("Run_back")
 		
-	if abs(moviment) < 0.1:
+	if abs(moviment.x) < 0.1:
 		$AnimatedSprite.play("Idle")
 
 func position():
