@@ -142,5 +142,6 @@ animation = "idle"
 [connection signal="item_selected" from="Control/Pantalla/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="Control/HBoxContainer/Language" to="." method="_on_Language_item_selected"]
 [connection signal="value_changed" from="Control/HBoxContainer2/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="mouse_entered" from="Control/TextureButton" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="pressed" from="Control/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="animation_finished" from="Control/TextureButton/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

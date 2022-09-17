@@ -4,7 +4,7 @@ var Idioma = "English"
 var Volum = 50
 var Player_pos = Vector2()
 var on_menu = true
-var Musica
+var Musica 
 
 
 func canvi_idioma(idioma):

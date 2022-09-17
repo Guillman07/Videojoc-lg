@@ -20,7 +20,7 @@ func _on_Curar_timeout():
 	vida = 1000
 
 
-func dany(dany):
+func damage(dany):
 	vida -= dany
 	$AnimatedSprite.play("Hit")
 	$Tween.interpolate_property($Vida,'value',$Vida.value, vida, 0.2,Tween.TRANS_LINEAR)

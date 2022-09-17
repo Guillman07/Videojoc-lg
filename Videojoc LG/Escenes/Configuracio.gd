@@ -14,7 +14,7 @@ func _ready():
 	AddResolutions()
 	AddIdioma()
 	FullscreenToggle.pressed = OS.is_window_fullscreen()
-
+	
 func _process(delta):
 	idioma()
 
@@ -81,5 +81,5 @@ func _on_AnimatedSprite_animation_finished():
 	if $Control/TextureButton/AnimatedSprite.animation == "confirm" :
 		get_tree().change_scene("res://Escenes/Menu.tscn")
 
-
-
+func _on_TextureButton_mouse_entered():
+	Global.Clic()

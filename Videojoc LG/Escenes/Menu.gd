@@ -29,7 +29,7 @@ func _on_TextureButton_pressed():
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Escenes/Configuracio.tscn")
-
+	Global.on_menu = true
 func _on_TextureButton_mouse_entered():
 	Global.Clic()
 	$Configuracio/AnimatedSprite.play("select")

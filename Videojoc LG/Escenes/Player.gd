@@ -54,6 +54,7 @@ func inputs_check(delta):
 		moviment = move_and_slide(moviment, Vector2.UP)
 		animacio(moviment)
 	
+
 func animacio(moviment):
 	
 	if moviment.x > 0.1:
@@ -115,8 +116,13 @@ func damage_player(amount):
 	$Tween.interpolate_property($Vida,'value',$Vida.value, current_health, 0.2,Tween.TRANS_LINEAR)
 	$Tween.start()
 	$Rebent.start()
+	
 
-		
+func _shield(amount):
+	shield += amount
+	$Tween.interpolate_property($Escut,'value',$Escut.value, shield, 0.2,Tween.TRANS_LINEAR)
+	$Tween.start()
+
 func die():
 	get_tree().quit()
 	
@@ -145,7 +151,4 @@ func modify_poder(amount):
 	if (new_poder > max_poder): current_poder = max_poder
 	else: current_poder += amount
 	
-func shield(amount):
-	shield = amount
-	$Tween.interpolate_property($Escut,'value',$Escut.value, shield, 0.2,Tween.TRANS_LINEAR)
-	$Tween.start()
+
