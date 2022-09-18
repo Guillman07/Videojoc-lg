@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background_menu.png-f50acb7e3afcbe45974f8a7d0a763371.stex"
+path="res://.import/Background_menu1.png-bc51aecc6d940b93e31603d19ada2c3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imatges/Menu/Background_menu.png"
-dest_files=[ "res://.import/Background_menu.png-f50acb7e3afcbe45974f8a7d0a763371.stex" ]
+source_file="res://Imatges/Menu/Background_menu1.png"
+dest_files=[ "res://.import/Background_menu1.png-bc51aecc6d940b93e31603d19ada2c3e.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -14,20 +14,20 @@ height = 90.0
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "Move",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "Move",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "Die",
-"speed": 5.0
+"speed": 4.0
 } ]
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["Enemic"]]
