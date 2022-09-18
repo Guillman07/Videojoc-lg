@@ -4,7 +4,7 @@ const Bola_foc = preload("res://Escenes/Bola_foc.tscn")
 var energia = 0
 var velocitat_base = 200
 var velocitat = Vector2.ZERO
-
+var dead = false
 var cami: Array = [] 
 var LevelNavigation: Navigation2D = null
 var Player = null
@@ -81,4 +81,10 @@ func damage(amount):
 	
 func die():
 	if current_health <= 0:
+		velocitat_base = 0
+		$AnimatedSprite.play("Die")
+		dead = true
+
+func _on_AnimatedSprite_animation_finished():
+	if dead == true:
 		queue_free()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Escenes/Configuracio.gd" type="Script" id=1]
 [ext_resource path="res://Imatges/Menu/Back_button3.png" type="Texture" id=2]
 [ext_resource path="res://Imatges/Menu/Back_button2.png" type="Texture" id=3]
 [ext_resource path="res://Imatges/Menu/Back_button1.png" type="Texture" id=4]
 [ext_resource path="res://Imatges/Menu/Background_menu2.png" type="Texture" id=5]
+[ext_resource path="res://Imatges/Tilemap/Tree_1.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,14 +47,333 @@ margin_bottom = 304.0
 rect_scale = Vector2( 1.00457, 0.998445 )
 texture = ExtResource( 5 )
 
+[node name="Part inferior" type="Node2D" parent="Control"]
+modulate = Color( 0.713726, 0.713726, 0.713726, 1 )
+
+[node name="Tree" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 389, 298 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree2" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 375, 325 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree3" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 403, 337 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree4" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 421, 365 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree5" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 390, 373 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree6" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 359, 352 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree7" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 367, 392 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree8" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 393, 410 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree9" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 348, 297 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree10" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 312.48, 335.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree11" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 298.479, 362.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree12" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 326.48, 374.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree13" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 344.479, 402.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree14" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 313.479, 410.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree15" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 282.479, 389.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree16" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 290.479, 429.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree17" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 316.48, 447.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree18" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 271.479, 334.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree19" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 226.48, 301.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree20" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 212.479, 328.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree21" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 240.48, 340.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree22" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 258.479, 368.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree23" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 227.479, 376.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree24" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 196.479, 355.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree25" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 204.479, 395.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree26" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 230.48, 413.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree27" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 185.479, 300.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree28" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 143.48, 344.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree29" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 129.479, 371.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree30" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 157.48, 383.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree31" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 175.479, 411.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree32" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 144.479, 419.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree33" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 113.479, 398.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree34" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 121.479, 438.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree35" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 147.48, 456.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree36" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 102.479, 343.401 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree37" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 22, 405 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree38" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 67, 434 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree39" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 72, 376 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree40" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 295, 286 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree41" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 205, 470 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Tree42" type="Sprite" parent="Control/Part inferior"]
+position = Vector2( 250, 459 )
+scale = Vector2( 0.374795, 0.35521 )
+texture = ExtResource( 6 )
+
+[node name="Part Mitja" type="Node2D" parent="Control"]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+
+[node name="Tree" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 997, -13 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree2" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 962, -10 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree3" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 940, 22 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree4" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 902, 20 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree5" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 758, 29 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree6" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 803, 46 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree7" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 845, 31 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree8" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 1013, 94 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree9" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 994, 134 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree10" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 953, 119 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree11" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 915, 140 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Tree12" type="Sprite" parent="Control/Part Mitja"]
+position = Vector2( 864, 132 )
+scale = Vector2( 0.425198, 0.366848 )
+texture = ExtResource( 6 )
+
+[node name="Part superior" type="Node2D" parent="Control"]
+modulate = Color( 0.560784, 0.560784, 0.560784, 1 )
+
+[node name="Tree" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 992, 192 )
+texture = ExtResource( 6 )
+
+[node name="Tree2" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 984, 252 )
+texture = ExtResource( 6 )
+
+[node name="Tree3" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 944, 348 )
+texture = ExtResource( 6 )
+
+[node name="Tree4" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 919, 188 )
+texture = ExtResource( 6 )
+
+[node name="Tree5" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 882, 250 )
+texture = ExtResource( 6 )
+
+[node name="Tree6" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 819, 294 )
+texture = ExtResource( 6 )
+
+[node name="Tree7" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 864, 376 )
+texture = ExtResource( 6 )
+
+[node name="Tree8" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 756, 217 )
+texture = ExtResource( 6 )
+
+[node name="Tree9" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 692, 281 )
+texture = ExtResource( 6 )
+
+[node name="Tree10" type="Sprite" parent="Control/Part superior"]
+position = Vector2( 750, 373 )
+texture = ExtResource( 6 )
+
 [node name="Pantalla" type="VBoxContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 113.0
-margin_top = 386.0
-margin_right = 228.0
-margin_bottom = 416.0
-rect_scale = Vector2( 0.992543, 0.948286 )
+margin_left = 8.0
+margin_top = 487.0
+margin_right = 123.0
+margin_bottom = 517.0
+rect_scale = Vector2( 0.80812, 0.935264 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Pantalla"]
 margin_right = 155.0
@@ -87,10 +407,10 @@ margin_right = 155.0
 margin_bottom = 32.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-margin_left = 562.0
-margin_top = 274.0
-margin_right = 709.0
-margin_bottom = 314.0
+margin_left = 449.0
+margin_top = 254.0
+margin_right = 596.0
+margin_bottom = 294.0
 
 [node name="Label_Language" type="Label" parent="Control/HBoxContainer"]
 margin_top = 7.0
@@ -104,10 +424,10 @@ margin_right = 147.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
-margin_left = 564.0
-margin_top = 336.0
-margin_right = 732.0
-margin_bottom = 376.0
+margin_left = 484.0
+margin_top = 311.0
+margin_right = 652.0
+margin_bottom = 351.0
 
 [node name="Label_volume" type="Label" parent="Control/HBoxContainer2"]
 margin_top = 7.0

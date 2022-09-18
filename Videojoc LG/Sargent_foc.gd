@@ -9,9 +9,9 @@ var cami: Array = []
 var LevelNavigation: Navigation2D = null
 var Player = null
 var player_detectat: bool = false 
-var current_health = 100
+var current_health = 300
 var on_area = false
-
+var dead = false
 onready var Ldv = $Linea_de_visio
 onready var Temps_atac = $Temps_atac
 
@@ -84,7 +84,9 @@ func damage(amount):
 	
 func die():
 	if current_health <= 0:
-		queue_free()
+		velocitat_base = 0
+		$AnimatedSprite.play("Die")
+		dead = true
 
 
 
@@ -96,3 +98,8 @@ func _on_Area_potenciadora_body_entered(body):
 		pass
 	
 
+
+
+func _on_AnimatedSprite_animation_finished():
+	if dead == true:
+		queue_free()

@@ -4,7 +4,8 @@ extends Control
 func _ready():
 	idioma()
 	Global.on_menu = true
-
+	birds()
+	
 func idioma():
 	if Global.Idioma == "English":
 		$Play/AnimatedSprite2.play("idle")
@@ -93,5 +94,14 @@ func _on_AnimatedSprite_animation_finished():
 	if $Quit/AnimatedSprite.animation == "confirm_cat" :
 		get_tree().quit()
 
+func birds():
+	if $Node2D/Timer_birds.is_stopped():
+		$Node2D/Birds.play("Birds")
+		
+func _on_Birds_animation_finished():
+	if $Node2D/Birds.animation == "Birds":
+		$Node2D/Birds.play("Res")
+		$Node2D/Timer_birds.start()
 
-
+func _on_Timer_birds_timeout():
+	birds()

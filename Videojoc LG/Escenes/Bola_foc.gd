@@ -27,6 +27,7 @@ func _on_Area2D_body_entered(body):
 		body.damage_player(dmg)
 		destruir()
 	if body.is_in_group("Enemic"):
-		pass
+		body.damage(20)
+		destruir()
 	else:
 		destruir()
