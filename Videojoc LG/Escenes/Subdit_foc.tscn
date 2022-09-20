@@ -69,4 +69,6 @@ texture_progress = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Line2D" type="Line2D" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

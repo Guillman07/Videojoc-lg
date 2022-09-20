@@ -13,6 +13,7 @@ var current_health = 100
 
 onready var Ldv = $Linea_de_visio
 onready var Temps_atac = $Temps_atac
+onready var line2d = $Line2D
 
 func _ready():
 	yield(get_tree(),"idle_frame")
@@ -23,6 +24,7 @@ func _ready():
 		Player = tree.get_nodes_in_group("Protagonista")[0]
 
 func _physics_process(delta):
+	line2d.global_position = Vector2.ZERO
 	if Temps_atac.is_stopped(): 
 		var direccio_bola_foc = self.global_position.direction_to(Global.Player_pos)
 		bola_foc(direccio_bola_foc)
@@ -56,7 +58,7 @@ func busca_seguent_pos():
 func genera_cami():
 	if LevelNavigation != null and Player != null:
 		cami = LevelNavigation.get_simple_path(global_position,Player.global_position, false)
-	
+		line2d.points = cami
 
 func moviment():
 	velocitat = move_and_slide(velocitat)
