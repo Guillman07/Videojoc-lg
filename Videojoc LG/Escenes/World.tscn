@@ -1465,4 +1465,12 @@ position = Vector2( -534, -909 )
 position = Vector2( 6, -5.5 )
 shape = SubResource( 21 )
 
+[node name="Made_by" type="Label" parent="Cofre_Easter_Egg"]
+visible = false
+margin_left = -132.0
+margin_top = 33.0
+margin_right = 150.0
+margin_bottom = 59.0
+text = "Made by: Lluc and Guillem"
+
 [connection signal="body_entered" from="Cofre_Easter_Egg" to="." method="_on_Cofre_Easter_Egg_body_entered"]
