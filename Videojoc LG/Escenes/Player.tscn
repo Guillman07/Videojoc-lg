@@ -42,26 +42,27 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 28.0
-height = 74.0
+radius = 12.0
+height = 42.0
 
 [node name="Player" type="KinematicBody2D" groups=["Protagonista"]]
 script = ExtResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.455869, 0.478455 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5, -2 )
+position = Vector2( -3, 0 )
+scale = Vector2( 0.888829, 1 )
 shape = SubResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="Node2D"]
-position = Vector2( 118, 0 )
+position = Vector2( 55, 0 )
 
 [node name="Temps_atac" type="Timer" parent="."]
 one_shot = true
