@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var Easter_egg = 1
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,3 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Cofre_Easter_Egg_body_entered(body):
+	if Easter_egg == 1:
+		Global.Money += 1000
+		Easter_egg -= 1
