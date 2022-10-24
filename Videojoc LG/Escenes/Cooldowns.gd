@@ -12,5 +12,5 @@ func _ready():
 
 
 
-func _process(delta):
-	$Label.text = str()
+#func _process(delta):
+	
