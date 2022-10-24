@@ -236,23 +236,23 @@ func _on_Cooldown_Hits_timeout():
 
 func _on_Timer_timeout():
 	if CooldownHits.is_stopped():
-		$Cooldowns/Hit2.modulate = "ffffff"
+		$Cooldowns/Hit_c/Hit2.modulate = "ffffff"
 	else:
-		$Cooldowns/Hit2.modulate = "96ffffff"
+		$Cooldowns/Hit_c/Hit2.modulate = "96ffffff"
 		CooldownHit -= 1
-		$Cooldowns/Hit.text = str(CooldownHit)
+		$Cooldowns/Hit_c/Hit.text = str(CooldownHit)
 	if CooldownHit == 0:
-		$Cooldowns/Hit.text = ""
+		$Cooldowns/Hit_c/Hit.text = ""
 
 func _on_Timer2_timeout():
 	if Temps_atac.is_stopped():
-		$Cooldowns/Fireball1.modulate = "ffffff"
+		$Cooldowns/Fireball_c/Fireball1.modulate = "ffffff"
 	else:
-		$Cooldowns/Fireball1.modulate = "96ffffff"
+		$Cooldowns/Fireball_c/Fireball1.modulate = "96ffffff"
 		CooldownFireball -= 1
-		$Cooldowns/Fireball.text = str(CooldownFireball)
+		$Cooldowns/Fireball_c/Fireball.text = str(CooldownFireball)
 		if CooldownFireball == 0:
-			$Cooldowns/Fireball.text = ""
+			$Cooldowns/Fireball_c/Fireball.text = ""
 
 func _on_Temps_atac_timeout():
 	CooldownFireball = 5
