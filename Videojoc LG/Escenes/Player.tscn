@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Imatges/Idle/Main.Ch - Idle7.png" type="Texture" id=1]
 [ext_resource path="res://Imatges/Idle/Main.Ch - Idle4.png" type="Texture" id=2]
@@ -25,9 +25,16 @@
 [ext_resource path="res://Imatges/HUD/Simbol_Money.png" type="Texture" id=23]
 [ext_resource path="res://Escenes/Money.gd" type="Script" id=24]
 [ext_resource path="res://Imatges/HUD/Vida_gris.png" type="Texture" id=25]
+[ext_resource path="res://Imatges/Hit/Main.Ch.png" type="Texture" id=26]
+[ext_resource path="res://Imatges/Hit/Hit_2.png" type="Texture" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "Hit_2",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "Idle",
@@ -42,10 +49,23 @@ animations = [ {
 "loop": true,
 "name": "Run_back",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "Hit_1",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 15.1885, 31.5 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.08331
+height = 57.852
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 24.6484
+height = 38.7242
 
 [node name="Player" type="KinematicBody2D" groups=["Protagonista"]]
 script = ExtResource( 16 )
@@ -53,9 +73,9 @@ script = ExtResource( 16 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.489046, 0.494783 )
 frames = SubResource( 1 )
-animation = "Idle"
-frame = 8
+animation = "Hit_2"
 playing = true
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.5, -1.5 )
@@ -140,5 +160,48 @@ value = 50.0
 texture_under = ExtResource( 25 )
 texture_progress = ExtResource( 20 )
 
+[node name="Hit_area_1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_area_1"]
+position = Vector2( -2, -13 )
+rotation = 1.55881
+shape = SubResource( 3 )
+disabled = true
+
+[node name="TimerHit" type="Timer" parent="Hit_area_1"]
+wait_time = 0.5
+
+[node name="Hit_area_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_area_2"]
+position = Vector2( -1, -11 )
+rotation = -1.55422
+shape = SubResource( 4 )
+disabled = true
+
+[node name="TimerHit2" type="Timer" parent="Hit_area_2"]
+
+[node name="TimerHits" type="Timer" parent="."]
+
+[node name="Cooldown_Hits" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Cooldowns" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Cooldowns"]
+margin_left = -20.0
+margin_top = 175.0
+margin_right = 20.0
+margin_bottom = 201.0
+text = "0"
+
 [connection signal="timeout" from="Rebent" to="." method="_on_Rebent_timeout"]
 [connection signal="timeout" from="Regenerar" to="." method="_on_Regenerar_timeout"]
+[connection signal="body_entered" from="Hit_area_1" to="." method="_on_Hit_area_body_entered"]
+[connection signal="body_exited" from="Hit_area_1" to="." method="_on_Hit_area_1_body_exited"]
+[connection signal="timeout" from="Hit_area_1/TimerHit" to="." method="_on_TimerHit_timeout"]
+[connection signal="body_entered" from="Hit_area_2" to="." method="_on_Hit_area_2_body_entered"]
+[connection signal="body_exited" from="Hit_area_2" to="." method="_on_Hit_area_2_body_exited"]
+[connection signal="timeout" from="Hit_area_2/TimerHit2" to="." method="_on_TimerHit2_timeout"]
+[connection signal="timeout" from="TimerHits" to="." method="_on_TimerHits_timeout"]

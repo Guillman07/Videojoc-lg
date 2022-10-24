@@ -4,7 +4,8 @@ const bola_foc_Path = preload("res://Escenes/Bola_foc.tscn")
 const conjur_planta_Path = preload("res://Escenes/Conjur_planta.tscn")
 
 onready var Temps_atac = $Temps_atac
-var velocitat = 200
+onready var CooldownHits = $Cooldown_Hits
+var velocitat = 100
 var moviment = Vector2()
 
 var max_health : int = 100
@@ -18,6 +19,10 @@ var max_poder : int = 100
 var current_poder : int = 100
 var poder_regen : int = 1
 
+var Atacking = false
+var Hits = 0
+
+
 func _ready():
 	pass 
 
@@ -27,9 +32,10 @@ func _process(delta):
 	if r == 1:
 		$Regenerar.start()
 		r -= 1
-	
+	Show_Cooldowns()
 func inputs_check(delta):
 	if Global.on_menu == false:
+		
 		moviment = Vector2()
 		if Input.is_action_just_pressed("Q") and Temps_atac.is_stopped(): #and energia >= X
 			var direccio_bola_foc = self.global_position.direction_to(get_global_mouse_position())
@@ -52,8 +58,23 @@ func inputs_check(delta):
 		$Node2D.look_at(get_global_mouse_position())
 		position += moviment * delta
 		moviment = move_and_slide(moviment, Vector2.UP)
-		animacio(moviment)
-	
+		if Input.is_action_pressed("shift"):
+			velocitat = 150
+		else:
+			velocitat = 100
+			
+		if Input.is_action_just_pressed("E"): 
+			if CooldownHits.is_stopped():
+				if Hits == 0:
+					hit_1() 
+					
+				if Hits == 1:
+					hit_2()
+				
+		if not Atacking:
+			animacio(moviment)
+		
+		
 
 func animacio(moviment):
 	
@@ -68,8 +89,7 @@ func animacio(moviment):
 		if moviment.y < -0.1:
 			$AnimatedSprite.play("Run_back")
 		if moviment.y > 0.1:
-			pass
-			#$AnimatedSprite.play("Run_back")
+			$AnimatedSprite.play("Run")
 			
 		if moviment.y == 0:
 			$AnimatedSprite.play("Idle")
@@ -160,3 +180,61 @@ func modify_poder(amount):
 	
 func slow(amount):
 	velocitat -= amount
+
+func hit_1():
+	Atacking = true
+	velocitat = 0
+	$AnimatedSprite.play("Hit_1")
+	$Hit_area_1/TimerHit.start()
+	$Hit_area_1/CollisionShape2D.disabled = false
+
+func _on_TimerHit_timeout():
+	velocitat = 100
+	Atacking = false
+	$Hit_area_1/CollisionShape2D.disabled = true
+
+func hit_2():
+	Atacking = true
+	velocitat = 0
+	$AnimatedSprite.play("Hit_2")
+	$Hit_area_2/TimerHit2.start()
+	$TimerHits.start()
+	$Hit_area_2/CollisionShape2D.disabled = false
+	CooldownHits.start()
+	
+func _on_TimerHit2_timeout():
+	velocitat = 100
+	Atacking = false
+	$Hit_area_2/CollisionShape2D.disabled = true
+
+
+
+func _on_Hit_area_body_entered(body):
+		if Atacking == true:
+			if body.is_in_group("Enemic"):
+				body.damage(20)
+				Hits += 1  
+
+
+
+func _on_Hit_area_2_body_entered(body):
+		if Atacking == true and Hits == 1:
+			if body.is_in_group("Enemic"):
+				body.damage(40)
+				Hits = 0
+				
+
+
+
+
+
+func _on_TimerHits_timeout():
+	Hits = 0
+
+
+func Show_Cooldowns():
+	var Cooldown_hit = CooldownHits.wait_time
+	$Cooldowns/Label.text = str(Cooldown_hit)
+
+
+

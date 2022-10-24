@@ -14,14 +14,14 @@ radius = 19.0263
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Hit",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Hit",
 "speed": 5.0
 } ]
 
@@ -57,6 +57,13 @@ wait_time = 10.0
 wait_time = 0.25
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -185.0
+margin_top = 46.0
+margin_right = 256.0
+margin_bottom = 72.0
+text = "Prove your core abilities with q,e,space"
 
 [connection signal="timeout" from="Curar" to="." method="_on_Curar_timeout"]
 [connection signal="timeout" from="Timer_Animacio" to="." method="_on_Timer_Animacio_timeout"]
