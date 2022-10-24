@@ -38,15 +38,15 @@
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "Res",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "Birds",
 "speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Res",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -84,6 +84,11 @@ animations = [ {
 "name": "confirm_cat",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "idle_cat",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "confirm",
@@ -92,11 +97,6 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "select_cat",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "idle_cat",
 "speed": 5.0
 } ]
 
@@ -122,6 +122,11 @@ animations = [ {
 "name": "confirm_cat",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "idle_cat",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "confirm",
@@ -130,11 +135,6 @@ animations = [ {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
 "name": "select_cat",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "idle_cat",
 "speed": 5.0
 } ]
 
@@ -158,7 +158,7 @@ margin_left = -512.0
 margin_top = -301.0
 margin_right = 512.0
 margin_bottom = 304.0
-rect_scale = Vector2( 1.00457, 0.998445 )
+rect_scale = Vector2( 0.752389, 0.751457 )
 texture = ExtResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -175,6 +175,7 @@ margin_bottom = 300.0
 
 [node name="Coluds" type="Node2D" parent="Node2D"]
 position = Vector2( 0, -7.62939e-06 )
+scale = Vector2( 0.683962, 0.736721 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Coluds"]
 position = Vector2( 436, 45 )
@@ -190,10 +191,11 @@ scale = Vector2( 1.26541, 0.324253 )
 texture = ExtResource( 35 )
 
 [node name="Birds" type="AnimatedSprite" parent="Node2D"]
-position = Vector2( 271, 108 )
-scale = Vector2( 3.03657, 1.22578 )
+position = Vector2( 189, 76 )
+scale = Vector2( 2.07985, 0.816606 )
 frames = SubResource( 4 )
 animation = "Birds"
+frame = 3
 playing = true
 
 [node name="Timer_birds" type="Timer" parent="Node2D"]
@@ -202,6 +204,8 @@ one_shot = true
 
 [node name="Part Mitja" type="Node2D" parent="Node2D"]
 modulate = Color( 0.670588, 0.713726, 0.682353, 1 )
+position = Vector2( -102, 2.38419e-07 )
+scale = Vector2( 0.860369, 0.739887 )
 
 [node name="Tree" type="Sprite" parent="Node2D/Part Mitja"]
 position = Vector2( 997, -13 )
@@ -265,6 +269,8 @@ texture = ExtResource( 34 )
 
 [node name="Part superior" type="Node2D" parent="Node2D"]
 modulate = Color( 0.737869, 0.777344, 0.746813, 1 )
+position = Vector2( 28, 9 )
+scale = Vector2( 0.69452, 0.749555 )
 
 [node name="Tree" type="Sprite" parent="Node2D/Part superior"]
 position = Vector2( 992, 192 )
@@ -307,6 +313,8 @@ position = Vector2( 750, 373 )
 texture = ExtResource( 34 )
 
 [node name="Part inferior" type="Node2D" parent="Node2D"]
+position = Vector2( 12, 53 )
+scale = Vector2( 0.694563, 0.642145 )
 
 [node name="Tree" type="Sprite" parent="Node2D/Part inferior"]
 position = Vector2( 389, 298 )
@@ -519,11 +527,11 @@ scale = Vector2( 0.374795, 0.35521 )
 texture = ExtResource( 34 )
 
 [node name="Configuracio" type="TextureButton" parent="."]
-margin_left = 128.0
-margin_top = 480.0
-margin_right = 158.0
-margin_bottom = 485.0
-rect_scale = Vector2( -3.6465, 17.5683 )
+margin_left = 71.0
+margin_top = 372.0
+margin_right = 101.0
+margin_bottom = 377.0
+rect_scale = Vector2( -1.60267, 9.82133 )
 
 [node name="Timer" type="Timer" parent="Configuracio"]
 wait_time = 0.5
@@ -546,11 +554,11 @@ custom_fonts/font = ExtResource( 22 )
 text = "Options"
 
 [node name="Play" type="TextureButton" parent="."]
-margin_left = 463.0
-margin_top = 238.0
-margin_right = 581.0
-margin_bottom = 307.0
-rect_scale = Vector2( 1.54907, 1.51075 )
+margin_left = 346.0
+margin_top = 182.0
+margin_right = 464.0
+margin_bottom = 251.0
+rect_scale = Vector2( 0.98602, 0.917777 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Play"]
 position = Vector2( 47.1249, 46.6655 )
@@ -561,11 +569,11 @@ animation = "idle"
 [node name="TimerPlay" type="Timer" parent="Play"]
 
 [node name="Quit" type="TextureButton" parent="."]
-margin_left = 853.0
-margin_top = 496.0
-margin_right = 893.0
-margin_bottom = 536.0
-rect_scale = Vector2( 4, 1.4 )
+margin_left = 641.0
+margin_top = 372.0
+margin_right = 681.0
+margin_bottom = 412.0
+rect_scale = Vector2( 2.61899, 1.0201 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Quit"]
 position = Vector2( 19.0946, 31.3821 )

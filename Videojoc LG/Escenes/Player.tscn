@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Imatges/Idle/Main.Ch - Idle7.png" type="Texture" id=1]
 [ext_resource path="res://Imatges/Idle/Main.Ch - Idle4.png" type="Texture" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://Imatges/HUD/Escut.png" type="Texture" id=20]
 [ext_resource path="res://Imatges/Run_back/Main_Ch_Run_Back1.png" type="Texture" id=21]
 [ext_resource path="res://Imatges/Run_back/Main_Ch_Run_Back2.png" type="Texture" id=22]
+[ext_resource path="res://Imatges/HUD/Simbol_Money.png" type="Texture" id=23]
+[ext_resource path="res://Escenes/Money.gd" type="Script" id=24]
+[ext_resource path="res://Imatges/HUD/Vida_gris.png" type="Texture" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -42,20 +45,20 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 13.5009, 30.5 )
+extents = Vector2( 15.1885, 31.5 )
 
 [node name="Player" type="KinematicBody2D" groups=["Protagonista"]]
 script = ExtResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.455869, 0.478455 )
+scale = Vector2( 0.489046, 0.494783 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 7
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3, -1.5 )
+position = Vector2( -2.5, -1.5 )
 scale = Vector2( 0.888829, 1 )
 shape = SubResource( 2 )
 
@@ -68,21 +71,21 @@ position = Vector2( 55, 0 )
 one_shot = true
 
 [node name="Vida" type="TextureProgress" parent="."]
-margin_left = -67.0
-margin_top = -88.0
-margin_right = 113.0
-margin_bottom = 92.0
-rect_scale = Vector2( 0.75, 0.075 )
+margin_left = -40.0
+margin_top = -50.0
+margin_right = 140.0
+margin_bottom = 130.0
+rect_scale = Vector2( 0.438151, 0.0469379 )
 value = 100.0
 texture_under = ExtResource( 19 )
 texture_progress = ExtResource( 18 )
 
 [node name="Escut" type="TextureProgress" parent="."]
-margin_left = -68.0
-margin_top = -88.0
-margin_right = 112.0
-margin_bottom = 92.0
-rect_scale = Vector2( 0.75, 0.075 )
+margin_left = -40.0
+margin_top = -50.0
+margin_right = 140.0
+margin_bottom = 130.0
+rect_scale = Vector2( 0.437039, 0.0472017 )
 texture_progress = ExtResource( 20 )
 
 [node name="Tween" type="Tween" parent="."]
@@ -94,12 +97,48 @@ wait_time = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.75, 0.75 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -21.0
 margin_top = -121.0
 margin_right = 19.0
 margin_bottom = -95.0
+
+[node name="Money" type="Node2D" parent="."]
+script = ExtResource( 24 )
+
+[node name="Label2" type="Label" parent="Money"]
+margin_left = 313.0
+margin_top = -216.0
+margin_right = 359.0
+margin_bottom = -190.0
+text = "1000"
+
+[node name="SimbolMoney" type="Sprite" parent="Money"]
+position = Vector2( 291, -199 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="XP" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="XP"]
+margin_left = -365.0
+margin_top = -219.0
+margin_right = -325.0
+margin_bottom = -193.0
+rect_scale = Vector2( 1.50298, 1.46962 )
+text = "1"
+
+[node name="TextureProgress" type="TextureProgress" parent="XP"]
+margin_left = -344.0
+margin_top = -200.0
+margin_right = -164.0
+margin_bottom = -20.0
+rect_scale = Vector2( 0.757502, 0.0719464 )
+value = 50.0
+texture_under = ExtResource( 25 )
+texture_progress = ExtResource( 20 )
 
 [connection signal="timeout" from="Rebent" to="." method="_on_Rebent_timeout"]
 [connection signal="timeout" from="Regenerar" to="." method="_on_Regenerar_timeout"]
