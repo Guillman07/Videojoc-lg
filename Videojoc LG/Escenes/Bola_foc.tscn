@@ -9,8 +9,8 @@
 [ext_resource path="res://Imatges/Fireball/Fireball3.png" type="Texture" id=7]
 [ext_resource path="res://Escenes/Bola_foc.gd" type="Script" id=8]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 24.0
+[sub_resource type="CircleShape2D" id=3]
+radius = 10.4948
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -26,14 +26,16 @@ scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3, 0 )
-shape = SubResource( 1 )
+position = Vector2( -2.06443, 1.97414 )
+scale = Vector2( 1.44105, 1.09533 )
+shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = -1.54033
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "Idle"
-frame = 1
+frame = 6
 speed_scale = 2.0
 playing = true
 

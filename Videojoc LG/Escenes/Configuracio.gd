@@ -79,5 +79,5 @@ func _on_TextureButton_pressed():
 
 func _on_AnimatedSprite_animation_finished():
 	if $Control/TextureButton/AnimatedSprite.animation == "confirm" :
-		get_tree().change_scene("res://Escenes/Menu.tscn")
+		get_tree().change_scene("res://Global/Global.tscn")
 

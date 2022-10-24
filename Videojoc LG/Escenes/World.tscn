@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Escenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Imatges/Tilemap/Herba.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Imatges/Topdown_Textures/TX Tileset Grass.png" type="Texture" id=10]
 [ext_resource path="res://Imatges/Topdown_Textures/TX Props.png" type="Texture" id=11]
 [ext_resource path="res://Imatges/Sprout Lands/Tilesets/Water.png" type="Texture" id=12]
+[ext_resource path="res://Imatges/HUD/Simbol_Money.png" type="Texture" id=13]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 160, 160, 0, 160, 0, 0, 160, 0 )
@@ -1396,6 +1397,9 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 16, 15.5 )
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 45.4375, 17.0313 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -1418,7 +1422,7 @@ tile_data = PoolIntArray( -2687004, 3, 0, -2687003, 3, 0, -2687002, 3, 0, -26870
 tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -2621382, 0, 0, -2555869, 12, 0, -2490292, 12, 0, -2424764, 12, 0, -2359270, 0, 0, -2359242, 12, 0, -2293685, 0, 0, -2162652, 12, 0, -2162626, 0, 0, -2031633, 13, 0, -2031631, 3, 0, -1966099, 4, 0, -1900565, 13, 0, -1900561, 1, 0, -1900557, 13, 0, -1966004, 12, 0, -1835027, 3, 0, -1900503, 12, 0, -1769487, 4, 0, -1834974, 12, 0, -1703953, 13, 0, -1769451, 0, 0, -1638413, 7, 0, -1703875, 12, 0, -1638396, 6, 0, -1638372, 12, 0, -1638351, 10, 0, -1638345, 12, 0, -1507311, 9, 0, -1441726, 0, 0, -1245137, 9, 0, -1179628, 7, 0, -983031, 12, 0, -983024, 11, 0, -917478, 12, 0, -917453, 12, 0, -917444, 0, 0, -655349, 12, 0, -655332, 12, 0, -524265, 12, 0, -524255, 12, 0, -393204, 12, 0, -262134, 12, 0, -262118, 12, 0, -196578, 12, 0, -196573, 12, 0, -131052, 10, 0, 65550, 12, 0, 65552, 13, 0, 65556, 13, 0, 131086, 2, 0, 131092, 2, 0, 262160, 13, 0, 262164, 13, 0, 327694, 2, 0, 327700, 2, 0, 458768, 3, 0, 524308, 4, 0, 589837, 8, 0, 589846, 8, 0, 655374, 15, 0, 720910, 18, 0, 720918, 14, 0, 786449, 5, 0, 786454, 20, 0, 851986, 17, 0, 983058, 15, 0, 1048589, 8, 0, 1048594, 18, 0, 1048598, 8, 0 )
+tile_data = PoolIntArray( -2621382, 0, 0, -2555869, 12, 0, -2490292, 12, 0, -2424764, 12, 0, -2359270, 0, 0, -2359242, 12, 0, -2293685, 0, 0, -2097169, 13, 0, -2162652, 12, 0, -2162626, 0, 0, -2031631, 3, 0, -1966099, 4, 0, -1900565, 13, 0, -1900561, 1, 0, -1900557, 13, 0, -1966004, 12, 0, -1835027, 3, 0, -1900503, 12, 0, -1769487, 4, 0, -1834974, 12, 0, -1769451, 0, 0, -1638413, 7, 0, -1703875, 12, 0, -1638396, 6, 0, -1638372, 12, 0, -1638351, 10, 0, -1638345, 12, 0, -1507311, 9, 0, -1441726, 0, 0, -1245137, 9, 0, -1179628, 7, 0, -983031, 12, 0, -983024, 11, 0, -917478, 12, 0, -917453, 12, 0, -917444, 0, 0, -655349, 12, 0, -655332, 12, 0, -524265, 12, 0, -524255, 12, 0, -393204, 12, 0, -262134, 12, 0, -262118, 12, 0, -196578, 12, 0, -196573, 12, 0, -131052, 10, 0, 65550, 12, 0, 65552, 13, 0, 65556, 13, 0, 131086, 2, 0, 131092, 2, 0, 262160, 13, 0, 262164, 13, 0, 327694, 2, 0, 327700, 2, 0, 458768, 3, 0, 524308, 4, 0, 589837, 8, 0, 589846, 8, 0, 655374, 15, 0, 720910, 18, 0, 720918, 14, 0, 786449, 5, 0, 786454, 20, 0, 851986, 17, 0, 983058, 15, 0, 1048589, 8, 0, 1048594, 18, 0, 1048598, 8, 0 )
 
 [node name="TileMap4" type="TileMap" parent="Navigation2D"]
 tile_set = SubResource( 6 )
@@ -1473,4 +1477,35 @@ margin_right = 150.0
 margin_bottom = 59.0
 text = "Made by: Lluc and Guillem"
 
+[node name="Label" type="Label" parent="Cofre_Easter_Egg"]
+visible = false
+margin_left = -32.0
+margin_top = -60.0
+margin_right = 31.0
+margin_bottom = -34.0
+text = "+ 1000"
+
+[node name="Timer_cofre" type="Timer" parent="Cofre_Easter_Egg"]
+wait_time = 3.0
+
+[node name="Sprite" type="Sprite" parent="Cofre_Easter_Egg"]
+visible = false
+position = Vector2( 42, -43 )
+scale = Vector2( 0.413558, 0.372948 )
+texture = ExtResource( 13 )
+
+[node name="wsad" type="Area2D" parent="."]
+position = Vector2( 491, 472 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wsad"]
+position = Vector2( 101, -252 )
+shape = SubResource( 22 )
+
+[node name="Label" type="Label" parent="wsad"]
+margin_right = 40.0
+margin_bottom = 26.0
+text = "Use w,s,a,d to move"
+
 [connection signal="body_entered" from="Cofre_Easter_Egg" to="." method="_on_Cofre_Easter_Egg_body_entered"]
+[connection signal="timeout" from="Cofre_Easter_Egg/Timer_cofre" to="." method="_on_Timer_cofre_timeout"]
+[connection signal="body_entered" from="wsad" to="." method="_on_wsad_body_entered"]

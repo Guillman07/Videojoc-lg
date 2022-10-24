@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Escenes/Configuracio.gd" type="Script" id=1]
 [ext_resource path="res://Imatges/Menu/Back_button3.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Imatges/Menu/Back_button1.png" type="Texture" id=4]
 [ext_resource path="res://Imatges/Menu/Background_menu2.png" type="Texture" id=5]
 [ext_resource path="res://Imatges/Tilemap/Tree_1.png" type="Texture" id=6]
+[ext_resource path="res://Escenes/software_cursor.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -457,6 +458,8 @@ position = Vector2( 0.952072, 1.66195 )
 scale = Vector2( 0.028111, 0.0284571 )
 frames = SubResource( 1 )
 animation = "idle"
+
+[node name="software_cursor" parent="." instance=ExtResource( 7 )]
 
 [connection signal="toggled" from="Control/Pantalla/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
 [connection signal="item_selected" from="Control/Pantalla/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
