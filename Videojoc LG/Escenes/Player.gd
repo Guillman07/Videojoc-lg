@@ -21,8 +21,9 @@ var poder_regen : int = 1
 
 var Atacking = false
 var Hits = 0
-
-
+var stopped = false
+var CooldownHit = 10
+var CooldownFireball = 5
 func _ready():
 	pass 
 
@@ -32,7 +33,7 @@ func _process(delta):
 	if r == 1:
 		$Regenerar.start()
 		r -= 1
-	Show_Cooldowns()
+	
 func inputs_check(delta):
 	if Global.on_menu == false:
 		
@@ -42,7 +43,8 @@ func inputs_check(delta):
 			bola_foc(direccio_bola_foc)
 			
 		if Input.is_action_just_pressed("E") and Temps_atac.is_stopped(): #and energia >= X
-			conjur_planta()
+			pass
+			#conjur_planta()
 			
 		if Input.is_action_pressed("Est"):
 			moviment.x += 1
@@ -61,14 +63,19 @@ func inputs_check(delta):
 		if Input.is_action_pressed("shift"):
 			velocitat = 150
 		else:
-			velocitat = 100
+			if stopped == false:
+				velocitat = 100
 			
 		if Input.is_action_just_pressed("E"): 
 			if CooldownHits.is_stopped():
 				if Hits == 0:
+					stopped = true
+					velocitat = 0
 					hit_1() 
 					
 				if Hits == 1:
+					stopped = true
+					velocitat = 0
 					hit_2()
 				
 		if not Atacking:
@@ -107,12 +114,12 @@ func bola_foc(direccio_bola_foc : Vector2):
 		var rotacio = direccio_bola_foc.angle()
 		bola_foc.rotation = rotacio
 		
-		Temps_atac.wait_time = 3
+		
 		Temps_atac.start()
 
 		#energia -= X
 func conjur_planta():
-	#get_parent().get_child("software_cursor") NI IDEA     CANVIAR ANIMACIO DEL CURSOR
+
 	
 	if Input.is_action_just_pressed("Confirmar") and Temps_atac.is_stopped():
 		$Conjur_planta.play("Animacio")
@@ -183,19 +190,17 @@ func slow(amount):
 
 func hit_1():
 	Atacking = true
-	velocitat = 0
 	$AnimatedSprite.play("Hit_1")
 	$Hit_area_1/TimerHit.start()
 	$Hit_area_1/CollisionShape2D.disabled = false
 
 func _on_TimerHit_timeout():
-	velocitat = 100
+	stopped = false
 	Atacking = false
 	$Hit_area_1/CollisionShape2D.disabled = true
 
 func hit_2():
 	Atacking = true
-	velocitat = 0
 	$AnimatedSprite.play("Hit_2")
 	$Hit_area_2/TimerHit2.start()
 	$TimerHits.start()
@@ -203,38 +208,51 @@ func hit_2():
 	CooldownHits.start()
 	
 func _on_TimerHit2_timeout():
-	velocitat = 100
+	stopped = false
 	Atacking = false
 	$Hit_area_2/CollisionShape2D.disabled = true
-
-
 
 func _on_Hit_area_body_entered(body):
 		if Atacking == true:
 			if body.is_in_group("Enemic"):
-				body.damage(20)
+				body.damage(10)
 				Hits += 1  
-
 
 
 func _on_Hit_area_2_body_entered(body):
 		if Atacking == true and Hits == 1:
 			if body.is_in_group("Enemic"):
-				body.damage(40)
+				body.damage(50)
+				shield(20)
 				Hits = 0
 				
-
-
-
 
 
 func _on_TimerHits_timeout():
 	Hits = 0
 
+func _on_Cooldown_Hits_timeout():
+	CooldownHit = 10
 
-func Show_Cooldowns():
-	var Cooldown_hit = CooldownHits.wait_time
-	$Cooldowns/Label.text = str(Cooldown_hit)
+func _on_Timer_timeout():
+	if CooldownHits.is_stopped():
+		$Cooldowns/Hit2.modulate = "ffffff"
+	else:
+		$Cooldowns/Hit2.modulate = "96ffffff"
+		CooldownHit -= 1
+		$Cooldowns/Hit.text = str(CooldownHit)
+	if CooldownHit == 0:
+		$Cooldowns/Hit.text = ""
 
+func _on_Timer2_timeout():
+	if Temps_atac.is_stopped():
+		$Cooldowns/Fireball1.modulate = "ffffff"
+	else:
+		$Cooldowns/Fireball1.modulate = "96ffffff"
+		CooldownFireball -= 1
+		$Cooldowns/Fireball.text = str(CooldownFireball)
+		if CooldownFireball == 0:
+			$Cooldowns/Fireball.text = ""
 
-
+func _on_Temps_atac_timeout():
+	CooldownFireball = 5

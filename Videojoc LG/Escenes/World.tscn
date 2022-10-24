@@ -1394,11 +1394,11 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 16, 15.5 )
-
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 45.4375, 17.0313 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 16, 15.5 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -1436,10 +1436,6 @@ position = Vector2( 2785, -1807 )
 [node name="Generador_subdits_foc" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1381, -3457 )
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1192, -744 )
-scale = Vector2( 0.75, 0.75 )
-
 [node name="Shield" parent="." instance=ExtResource( 7 )]
 position = Vector2( -1306, -227 )
 
@@ -1455,14 +1451,43 @@ position = Vector2( 431, 101 )
 [node name="StaticBody2D3" parent="Enviroment" instance=ExtResource( 8 )]
 position = Vector2( 476, 117 )
 
-[node name="Cofre_Easter_Egg" type="Area2D" parent="."]
+[node name="software_cursor" parent="." instance=ExtResource( 5 )]
+position = Vector2( -71, -63 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 597, 411 )
+collision_layer = 2
+collision_mask = 5
+
+[node name="Tutorial" type="Node2D" parent="."]
+
+[node name="Shift" type="Label" parent="Tutorial"]
+margin_left = 483.0
+margin_top = -140.0
+margin_right = 694.0
+margin_bottom = -114.0
+text = "Use Shift to sprint"
+
+[node name="wsad" type="Area2D" parent="Tutorial"]
+position = Vector2( 491, 472 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial/wsad"]
+position = Vector2( 101, -252 )
+shape = SubResource( 22 )
+
+[node name="Label" type="Label" parent="Tutorial/wsad"]
+margin_right = 40.0
+margin_bottom = 26.0
+text = "Use w,s,a,d to move"
+
+[node name="Cofre_Easter_Egg" type="Area2D" parent="Tutorial"]
 position = Vector2( -534, -909 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cofre_Easter_Egg"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial/Cofre_Easter_Egg"]
 position = Vector2( 6, -5.5 )
 shape = SubResource( 21 )
 
-[node name="Made_by" type="Label" parent="Cofre_Easter_Egg"]
+[node name="Made_by" type="Label" parent="Tutorial/Cofre_Easter_Egg"]
 visible = false
 margin_left = -132.0
 margin_top = 33.0
@@ -1470,7 +1495,7 @@ margin_right = 150.0
 margin_bottom = 59.0
 text = "Made by: Lluc and Guillem"
 
-[node name="Label" type="Label" parent="Cofre_Easter_Egg"]
+[node name="Label" type="Label" parent="Tutorial/Cofre_Easter_Egg"]
 visible = false
 margin_left = -32.0
 margin_top = -60.0
@@ -1478,35 +1503,19 @@ margin_right = 31.0
 margin_bottom = -34.0
 text = "+ 1000"
 
-[node name="Timer_cofre" type="Timer" parent="Cofre_Easter_Egg"]
+[node name="Timer_cofre" type="Timer" parent="Tutorial/Cofre_Easter_Egg"]
 wait_time = 3.0
 
-[node name="Sprite" type="Sprite" parent="Cofre_Easter_Egg"]
+[node name="Sprite" type="Sprite" parent="Tutorial/Cofre_Easter_Egg"]
 visible = false
 position = Vector2( 42, -43 )
 scale = Vector2( 0.413558, 0.372948 )
 texture = ExtResource( 13 )
 
-[node name="wsad" type="Area2D" parent="."]
-position = Vector2( 491, 472 )
+[node name="StaticBody2D" parent="Tutorial" instance=ExtResource( 3 )]
+position = Vector2( 1192, -744 )
+scale = Vector2( 0.75, 0.75 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wsad"]
-position = Vector2( 101, -252 )
-shape = SubResource( 22 )
-
-[node name="Label" type="Label" parent="wsad"]
-margin_right = 40.0
-margin_bottom = 26.0
-text = "Use w,s,a,d to move"
-
-[node name="software_cursor" parent="." instance=ExtResource( 5 )]
-position = Vector2( -71, -63 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1002, -3469 )
-collision_layer = 2
-collision_mask = 5
-
-[connection signal="body_entered" from="Cofre_Easter_Egg" to="." method="_on_Cofre_Easter_Egg_body_entered"]
-[connection signal="timeout" from="Cofre_Easter_Egg/Timer_cofre" to="." method="_on_Timer_cofre_timeout"]
-[connection signal="body_entered" from="wsad" to="." method="_on_wsad_body_entered"]
+[connection signal="body_entered" from="Tutorial/wsad" to="." method="_on_wsad_body_entered"]
+[connection signal="body_entered" from="Tutorial/Cofre_Easter_Egg" to="." method="_on_Cofre_Easter_Egg_body_entered"]
+[connection signal="timeout" from="Tutorial/Cofre_Easter_Egg/Timer_cofre" to="." method="_on_Timer_cofre_timeout"]

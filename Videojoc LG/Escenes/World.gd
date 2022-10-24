@@ -17,23 +17,26 @@ func _process(delta):
 
 func idioma():
 	if Global.Idioma == "Catala":
-		$Cofre_Easter_Egg/Made_by.text = "Fet per : Lluc i Guillem"
+		$Tutorial/Cofre_Easter_Egg/Made_by.text = "Fet per : Lluc i Guillem"
+		$Tutorial/StaticBody2D/Label.text = "Prova les teves habilitats principals amb Q,E,Espai"
+		$Tutorial/Shift.text = "Utilitza Shift per a esprintar"
 	if Global.Idioma == "English":
-		$Cofre_Easter_Egg/Made_by.text = "Done by : Lluc and Guillem"
-		
+		$Tutorial/Cofre_Easter_Egg/Made_by.text = "Done by : Lluc and Guillem"
+		$Tutorial/StaticBody2D/Label.text = "Prove your core habilities with Q,E,Space"
+		$Tutorial/Shift.text = "Use Shift to sprint"
 func _on_Cofre_Easter_Egg_body_entered(body):
 	if Easter_egg == 1:
 		Global.Money += 1000
 		Easter_egg -= 1
-		$Cofre_Easter_Egg/Made_by.show()
-		$Cofre_Easter_Egg/Label.show()
-		$Cofre_Easter_Egg/Sprite.show()
-		$Cofre_Easter_Egg/Timer_cofre.start()
+		$Tutorial/Cofre_Easter_Egg/Made_by.show()
+		$Tutorial/Cofre_Easter_Egg/Label.show()
+		$Tutorial/Cofre_Easter_Egg/Sprite.show()
+		$Tutorial/Cofre_Easter_Egg/Timer_cofre.start()
 
 func _on_Timer_cofre_timeout():
-	$Cofre_Easter_Egg/Label.hide()
-	$Cofre_Easter_Egg/Sprite.hide()
+	$Tutorial/Cofre_Easter_Egg/Label.hide()
+	$Tutorial/Cofre_Easter_Egg/Sprite.hide()
 
 
 func _on_wsad_body_entered(body):
-	$wsad/Label.hide()
+	$Tutorial/wsad/Label.hide()
