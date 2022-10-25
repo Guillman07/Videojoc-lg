@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Escenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Imatges/Tilemap/Herba.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Imatges/Topdown_Textures/TX Props.png" type="Texture" id=11]
 [ext_resource path="res://Imatges/Sprout Lands/Tilesets/Water.png" type="Texture" id=12]
 [ext_resource path="res://Imatges/HUD/Simbol_Money.png" type="Texture" id=13]
+[ext_resource path="res://Escenes/Comerciant.tscn" type="PackedScene" id=14]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 160, 160, 0, 160, 0, 0, 160, 0 )
@@ -1455,7 +1456,7 @@ position = Vector2( 476, 117 )
 position = Vector2( -71, -63 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 597, 411 )
+position = Vector2( 595, 407 )
 collision_layer = 2
 collision_mask = 5
 
@@ -1515,6 +1516,9 @@ texture = ExtResource( 13 )
 [node name="StaticBody2D" parent="Tutorial" instance=ExtResource( 3 )]
 position = Vector2( 1192, -744 )
 scale = Vector2( 0.75, 0.75 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 14 )]
+position = Vector2( 795, -574 )
 
 [connection signal="body_entered" from="Tutorial/wsad" to="." method="_on_wsad_body_entered"]
 [connection signal="body_entered" from="Tutorial/Cofre_Easter_Egg" to="." method="_on_Cofre_Easter_Egg_body_entered"]

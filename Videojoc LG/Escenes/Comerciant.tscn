@@ -36,6 +36,7 @@ frames = SubResource( 2 )
 animation = "Idle"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -146.0
 margin_top = -122.0
 margin_right = -106.0

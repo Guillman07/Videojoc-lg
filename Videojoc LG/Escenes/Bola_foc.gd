@@ -4,15 +4,10 @@ extends Area2D
 var velocitat = 300
 var dmg = 20
 func _physics_process(delta):
-	
-	#var collision_info = move_and_collide(direccio.normalized() * delta * velocitat)
-	
-	#if collision_info != null:
-		#queue_free()
-	
+
 	var direccio = Vector2.RIGHT.rotated(rotation)
 	global_position += velocitat * direccio * delta
-	
+
 func destruir():
 	queue_free()
 
@@ -31,3 +26,9 @@ func _on_Area2D_body_entered(body):
 		destruir()
 	else:
 		destruir()
+
+	
+	#var collision_info = move_and_collide(direccio.normalized() * delta * velocitat)
+	
+	#if collision_info != null:
+		#queue_free()
