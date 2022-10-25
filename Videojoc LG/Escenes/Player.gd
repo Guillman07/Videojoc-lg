@@ -33,7 +33,16 @@ func _process(delta):
 	if r == 1:
 		$Regenerar.start()
 		r -= 1
+	idioma()
 	
+func idioma():
+	if Global.Idioma == "Catala":
+		$Cooldowns/Hit_c/Info_hit.text = "E : Golpeig simple, si impacta un enemic es pot fer un atac de gran potencia (amb E) i reps una petita porcio d'escut"
+		$Cooldowns/Fireball_c/Info_Fireball.text = "Q : Projectil de foc dirigit a la posicio del ratoli"
+	if Global.Idioma == "English":
+		$Cooldowns/Hit_c/Info_hit.text = "E : Simple hit, if hits an enemy you can do a powered (attack with E) which gives you a little porcion of shield"
+		$Cooldowns/Fireball_c/Info_Fireball.text = "Q : Fireball aimed to the mouse position that deals damage"
+		
 func inputs_check(delta):
 	if Global.on_menu == false:
 		
@@ -104,6 +113,7 @@ func animacio(moviment):
 func position():
 	var pos = self.position
 	Global.Player_pos(pos)
+	
 	
 func bola_foc(direccio_bola_foc : Vector2):
 	if bola_foc_Path:
@@ -215,14 +225,14 @@ func _on_TimerHit2_timeout():
 func _on_Hit_area_body_entered(body):
 		if Atacking == true:
 			if body.is_in_group("Enemic"):
-				body.damage(10)
+				body.damage(5)
 				Hits += 1  
 
 
 func _on_Hit_area_2_body_entered(body):
 		if Atacking == true and Hits == 1:
 			if body.is_in_group("Enemic"):
-				body.damage(50)
+				body.damage(40)
 				shield(20)
 				Hits = 0
 				
@@ -256,3 +266,16 @@ func _on_Timer2_timeout():
 
 func _on_Temps_atac_timeout():
 	CooldownFireball = 5
+
+
+func _on_Hit_c_mouse_entered():
+	$Cooldowns/Hit_c/Info_hit.show()
+
+func _on_Hit_c_mouse_exited():
+	$Cooldowns/Hit_c/Info_hit.hide()
+
+func _on_Fireball_c_mouse_entered():
+	$Cooldowns/Fireball_c/Info_Fireball.show()
+
+func _on_Fireball_c_mouse_exited():
+	$Cooldowns/Fireball_c/Info_Fireball.hide()

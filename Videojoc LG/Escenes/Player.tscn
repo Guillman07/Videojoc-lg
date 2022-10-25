@@ -31,16 +31,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 15 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Run",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 27 ) ],
 "loop": true,
 "name": "Hit_2",
@@ -55,6 +45,16 @@ animations = [ {
 "loop": true,
 "name": "Hit_1",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -81,7 +81,7 @@ script = ExtResource( 16 )
 scale = Vector2( 0.489046, 0.494783 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 7
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -218,10 +218,13 @@ position = Vector2( 3, -196.5 )
 shape = SubResource( 5 )
 
 [node name="Info_hit" type="Label" parent="Cooldowns/Hit_c"]
-margin_left = -19.0
-margin_top = -173.0
-margin_right = 21.0
-margin_bottom = -147.0
+visible = false
+margin_left = -304.0
+margin_top = -166.0
+margin_right = 893.0
+margin_bottom = -140.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "E : Simple hit, if hits an enemy you can do a powered (attack with E) which gives you a little porcion of shield"
 
 [node name="Fireball_c" type="Area2D" parent="Cooldowns"]
 
@@ -243,6 +246,15 @@ autostart = true
 position = Vector2( -59, -200 )
 shape = SubResource( 6 )
 
+[node name="Info_Fireball" type="Label" parent="Cooldowns/Fireball_c"]
+visible = false
+margin_left = -154.0
+margin_top = -165.0
+margin_right = 490.0
+margin_bottom = -139.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Q : Fireball aimed to the mouse position that deals damage"
+
 [connection signal="timeout" from="Temps_atac" to="." method="_on_Temps_atac_timeout"]
 [connection signal="timeout" from="Rebent" to="." method="_on_Rebent_timeout"]
 [connection signal="timeout" from="Regenerar" to="." method="_on_Regenerar_timeout"]
@@ -252,5 +264,9 @@ shape = SubResource( 6 )
 [connection signal="timeout" from="Hit_area_2/TimerHit2" to="." method="_on_TimerHit2_timeout"]
 [connection signal="timeout" from="TimerHits" to="." method="_on_TimerHits_timeout"]
 [connection signal="timeout" from="Cooldown_Hits" to="." method="_on_Cooldown_Hits_timeout"]
+[connection signal="mouse_entered" from="Cooldowns/Hit_c" to="." method="_on_Hit_c_mouse_entered"]
+[connection signal="mouse_exited" from="Cooldowns/Hit_c" to="." method="_on_Hit_c_mouse_exited"]
 [connection signal="timeout" from="Cooldowns/Hit_c/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="mouse_entered" from="Cooldowns/Fireball_c" to="." method="_on_Fireball_c_mouse_entered"]
+[connection signal="mouse_exited" from="Cooldowns/Fireball_c" to="." method="_on_Fireball_c_mouse_exited"]
 [connection signal="timeout" from="Cooldowns/Fireball_c/Timer2" to="." method="_on_Timer2_timeout"]
